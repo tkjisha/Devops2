@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.DAO.BlogDAOImpl;
 import com.niit.DAO.ForumDAOImpl;
+import com.niit.DAO.JobDAOImpl;
 
 @Configuration
 @ComponentScan("com.niit.*")
@@ -46,6 +47,7 @@ public class DBConfig {
 		localSessionFacBuilder.addProperties(hibProp);
 		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.Blog.class);
 		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.Forum.class);
+		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.Job.class);
 		SessionFactory sessionFactory=localSessionFacBuilder.buildSessionFactory();
 		System.out.println("Session Factory Object Created");
 		return sessionFactory;
@@ -72,4 +74,12 @@ public class DBConfig {
 	{
 		return new ForumDAOImpl(sf);
 	}
+	
+	@Autowired
+	@Bean(name="jobDAOImpl")
+	public JobDAOImpl getjobData(SessionFactory sf)
+	{
+		return new JobDAOImpl(sf);
+	}
+	
 }

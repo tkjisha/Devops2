@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.Model.Blog;
 
-@Repository("blogDAO")
+@Repository("blogDAO") @Transactional
 public class BlogDAOImpl implements BlogDAO{
 
 	@Autowired
@@ -25,11 +25,11 @@ public class BlogDAOImpl implements BlogDAO{
 		this.sessionFactory=sessionFactory;
 	}
 	
-	@Transactional
+	
 	public boolean addBlog(Blog blog) {
 		try{
 			sessionFactory.getCurrentSession().persist(blog);
-			listBlog("ji");
+			//listBlog("ji");
 			return true;
 		}catch(Exception e)
 		{e.printStackTrace();
@@ -38,7 +38,8 @@ public class BlogDAOImpl implements BlogDAO{
 		
 	}
 
-	@Transactional
+	
+	
 	public boolean deleteBlog(Blog blog) {
 		
 		try{
@@ -51,7 +52,7 @@ public class BlogDAOImpl implements BlogDAO{
 		
 	}
 
-	@Transactional
+	
 	public boolean updateBlog(Blog blog) {
 		try{
 			sessionFactory.getCurrentSession().update(blog);

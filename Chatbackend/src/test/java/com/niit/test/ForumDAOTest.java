@@ -3,6 +3,8 @@ package com.niit.test;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -24,19 +26,46 @@ public class ForumDAOTest {
 		forumDAO=(ForumDAO) annotationConfigAppContext.getBean("forumDAO");
 	}
 	
-	@Test
+/*	@Test
 	public void testaddForum()
 	{
 		Forum f=new Forum();
-		f.setForumId(2);
-		f.setForumName("aa");
-		f.setForumContent("hi hello");
+		f.setForumId(3);
+		f.setForumName("acc");
+		f.setForumContent("forum12");
 		f.setCreateDate(new Date());
-		f.setStatus("a");
-		f.setUsername("ji");
+		f.setUsername("jis");
 	
 		assertEquals("added",true,forumDAO.addForum(f));
 	}
+	
+	@Test
+	public void testdeleteForum()
+	{
+		Forum f=forumDAO.getForum(3);
+		assertEquals("deleted",true,forumDAO.deleteForum(f));
+	}
+	
+	@Test
+	public void testupdateForum()
+	{
+		Forum f=forumDAO.getForum(1);
+		f.setForumName("aac");
+		assertEquals("updated",true,forumDAO.updateForum(f));
+	}*/
+	
+	@Test
+	public void testlistforum()
+	{
+		List<Forum> l=forumDAO.listForum();
+		Iterator li=l.iterator();
+		while(li.hasNext())
+		{
+			Forum f=(Forum)li.next();
+			System.out.print(f.getForumId()+f.getForumContent());
+		}
+	}
+	
 /*	@Test
 	public void test() {
 		fail("Not yet implemented");

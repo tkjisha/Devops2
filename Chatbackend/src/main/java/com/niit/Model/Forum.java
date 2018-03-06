@@ -16,14 +16,9 @@ public class Forum {
 	String forumContent;
 	Date createDate;
 	String username;
-	String status;
 	
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
+	
 	public int getForumId() {
 		return forumId;
 	}

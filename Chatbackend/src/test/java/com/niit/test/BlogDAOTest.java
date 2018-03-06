@@ -26,19 +26,37 @@ public class BlogDAOTest {
 		blogDAO=(BlogDAO) annotationConfigAppContext.getBean("blogDAO");
 	}
 	
-	@Test
+/*	@Test
 	public void testaddBlog()
 	{
 		Blog b=new Blog();
-		b.setBlogId(2);
-		b.setBlogName("aa");
-		b.setBlogContent("hi hello");
+		b.setBlogId(3);
+		b.setBlogName("abca");
+		b.setBlogContent("hihihello");
 		b.setCreateDate(new Date());
-		b.setStatus("a");
-		b.setUsername("ji");
+		b.setStatus("na");
+		b.setUsername("jish");
 	//	BlogDAO bd=new BlogDAOImpl(null);
 		assertEquals("added",true,blogDAO.addBlog(b));
+	}*/
+	
+/*	@Test
+	public void testdeleteBlog()
+	{
+		Blog b=blogDAO.getBlog(1);
+		System.out.println(b);
+		assertEquals("deleted",true,blogDAO.deleteBlog(b));
+	}*/
+	
+	@Test
+	public void testupdateBlog()
+	{
+		Blog b=blogDAO.getBlog(1);
+		b.setBlogName("aac");
+		assertEquals("updated",true,blogDAO.updateBlog(b));
+		
 	}
+	
 //	@Test
 /*	public void test() {
 		fail("Not yet implemented");

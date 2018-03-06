@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.Model.Forum;
 
-@Repository("forumDAO")
+@Repository("forumDAO") @Transactional
 public class ForumDAOImpl implements ForumDAO{
 
 	@Autowired
@@ -23,11 +24,12 @@ public class ForumDAOImpl implements ForumDAO{
 		this.sessionFactory=sessionFactory;
 	}
 	
-	@Transactional
+	
 	@Override
 	public boolean addForum(Forum forum) {
 		
 		try{
+			
 			sessionFactory.getCurrentSession().persist(forum);
 			
 			return true;
@@ -37,40 +39,52 @@ public class ForumDAOImpl implements ForumDAO{
 		}
 	}
 
+	
 	@Override
 	public boolean deleteForum(Forum forum) {
-		
-		return false;
+		try{
+			
+			sessionFactory.getCurrentSession().delete(forum);
+			
+			return true;
+		}catch(Exception e)
+		{
+			return false;
+		}
 	}
 
 	@Override
 	public boolean updateForum(Forum forum) {
 		
-		return false;
+		try{
+			sessionFactory.getCurrentSession().update(forum);
+			
+			return true;
+		}catch(Exception e)
+		{
+			return false;
+		}
 	}
 
-	@Override
-	public boolean approveForum(Forum forum) {
-		
-		return false;
-	}
-
-	@Override
-	public boolean rejectForum(Forum forum) {
-		
-		return false;
-	}
+	
 
 	@Override
 	public Forum getForum(int ForumId) {
 		
-		return null;
+		Forum f=null;
+		Session session=sessionFactory.getCurrentSession();
+		f=(Forum) session.get(Forum.class, ForumId);
+		System.out.println(f);
+		return f;
 	}
 
 	@Override
-	public List<Forum> listForum(String username) {
+	public List<Forum> listForum() {
+		Session session=sessionFactory.getCurrentSession();
+		List lf=null;
+		lf=session.createQuery("from Forum").list();
+		return lf;
 		
-		return null;
 	}
 
 	
