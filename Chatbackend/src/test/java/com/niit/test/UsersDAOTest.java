@@ -25,20 +25,20 @@ public class UsersDAOTest {
 		usersDAO=(UsersDAO) annotationConfigAppContext.getBean("usersDAO");
 	}
 	
-/*	@Test
+	@Test
 	public void testadduser()
 	{
 		Users u=new Users();
-		u.setUserId(1);
-		u.setUsername("ab");
-		u.setPassword("123");
-		u.setEmail("ab@gmail.com");
-		u.setAddress("kan");
-		u.setPhone("986356");
+	//	u.setUserId(1);
+		u.setUsername("acc");
+		u.setPassword("12345");
+		u.setEmail("acc@gmail.com");
+		u.setAddress("kannur");
+		u.setPhone("959356");
 		u.setRole("user");
 		assertEquals("added",true,usersDAO.addUser(u));
 		
-	}*/
+	}
 	
 /*	@Test
 	public void testdeleteuser()
@@ -54,7 +54,7 @@ public class UsersDAOTest {
 		u.setUsername("sss");
 		
 		assertEquals("updated",true,usersDAO.updateUser(u));
-	}*/
+	}
 	
 	@Test
 	public void testlistuser()
@@ -66,7 +66,7 @@ public class UsersDAOTest {
 			Users u=(Users)li.next();
 			System.out.print(u.getUserId()+u.getRole());
 		}
-	}
+	}*/
 	
 /*	@Test
 	public void test() {

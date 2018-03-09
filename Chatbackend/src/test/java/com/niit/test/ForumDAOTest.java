@@ -26,20 +26,20 @@ public class ForumDAOTest {
 		forumDAO=(ForumDAO) annotationConfigAppContext.getBean("forumDAO");
 	}
 	
-/*	@Test
+	@Test
 	public void testaddForum()
 	{
 		Forum f=new Forum();
-		f.setForumId(3);
-		f.setForumName("acc");
-		f.setForumContent("forum12");
+	//	f.setForumId(3);
+		f.setForumName("abc");
+		f.setForumContent("forum14");
 		f.setCreateDate(new Date());
-		f.setUsername("jis");
+		f.setUsername("jish");
 	
 		assertEquals("added",true,forumDAO.addForum(f));
 	}
 	
-	@Test
+/*	@Test
 	public void testdeleteForum()
 	{
 		Forum f=forumDAO.getForum(3);
@@ -52,7 +52,7 @@ public class ForumDAOTest {
 		Forum f=forumDAO.getForum(1);
 		f.setForumName("aac");
 		assertEquals("updated",true,forumDAO.updateForum(f));
-	}*/
+	}
 	
 	@Test
 	public void testlistforum()
@@ -64,7 +64,7 @@ public class ForumDAOTest {
 			Forum f=(Forum)li.next();
 			System.out.print(f.getForumId()+f.getForumContent());
 		}
-	}
+	}*/
 	
 /*	@Test
 	public void test() {

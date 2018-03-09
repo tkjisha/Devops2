@@ -26,19 +26,19 @@ public class BlogDAOTest {
 		blogDAO=(BlogDAO) annotationConfigAppContext.getBean("blogDAO");
 	}
 	
-/*	@Test
+	@Test
 	public void testaddBlog()
 	{
 		Blog b=new Blog();
-		b.setBlogId(3);
-		b.setBlogName("abca");
-		b.setBlogContent("hihihello");
+	//	b.setBlogId(3);
+		b.setBlogName("jis");
+		b.setBlogContent("hihi");
 		b.setCreateDate(new Date());
-		b.setStatus("na");
-		b.setUsername("jish");
+		b.setStatus("a");
+		b.setUsername("jisha");
 	//	BlogDAO bd=new BlogDAOImpl(null);
 		assertEquals("added",true,blogDAO.addBlog(b));
-	}*/
+	}
 	
 /*	@Test
 	public void testdeleteBlog()
@@ -46,7 +46,7 @@ public class BlogDAOTest {
 		Blog b=blogDAO.getBlog(1);
 		System.out.println(b);
 		assertEquals("deleted",true,blogDAO.deleteBlog(b));
-	}*/
+	}
 	
 	@Test
 	public void testupdateBlog()
@@ -55,7 +55,7 @@ public class BlogDAOTest {
 		b.setBlogName("aac");
 		assertEquals("updated",true,blogDAO.updateBlog(b));
 		
-	}
+	}*/
 	
 //	@Test
 /*	public void test() {

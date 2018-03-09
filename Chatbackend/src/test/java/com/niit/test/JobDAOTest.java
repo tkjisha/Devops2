@@ -26,11 +26,11 @@ public class JobDAOTest {
 		jobDAO=(JobDAO) annotationConfigAppContext.getBean("jobDAO");
 	}
 	
-/*	@Test
+	@Test
 	public void testaddJob()
 	{
 		Job j=new Job();
-		j.setJobId(3);
+	//	j.setJobId(3);
 		j.setDescription("ass");
 		j.setDesig("Engr");
 		j.setCompany("niit");
@@ -40,7 +40,7 @@ public class JobDAOTest {
 		j.setLocation("knr");
 		
 		assertEquals("added",true,jobDAO.addJob(j));
-	}*/
+	}
 	
 /*	@Test
 	public void testdeleteJob()
@@ -55,7 +55,7 @@ public class JobDAOTest {
 		Job j=jobDAO.getJob(1);
 		j.setDescription("job vacancy");
 		assertEquals("updated",true,jobDAO.updateJob(j));
-	}*/
+	}
 	
 	@Test
 	public void testlistjob()
@@ -67,7 +67,7 @@ public class JobDAOTest {
 			Job j=(Job)li.next();
 			System.out.print(j.getJobId()+j.getCompany());
 		}
-	}
+	}*/
 	
 	/*@Test
 	public void test() {

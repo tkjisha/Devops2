@@ -3,7 +3,10 @@ package com.niit.Model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +14,8 @@ import javax.persistence.Table;
 public class Forum {
 
 	@Id
+	@SequenceGenerator(name = "forumseq",sequenceName="forumseq" )
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="forumseq")
 	int forumId;
 	String forumName;
 	String forumContent;

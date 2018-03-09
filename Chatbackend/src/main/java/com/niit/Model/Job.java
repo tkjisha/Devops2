@@ -2,15 +2,22 @@ package com.niit.Model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="job")
 public class Job {
 
-	@Id
+	@Id	
+	@SequenceGenerator(name = "jobseq",sequenceName="jobseq" )
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="jobseq")
+	@Column(name="jobid", columnDefinition="integer")
 	int jobId;
 	String description;
 	String desig;

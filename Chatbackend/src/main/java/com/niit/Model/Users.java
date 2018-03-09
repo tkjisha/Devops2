@@ -1,7 +1,10 @@
 package com.niit.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -9,6 +12,8 @@ import javax.persistence.Table;
 public class Users {
 
 	@Id
+	@SequenceGenerator(name = "userseq",sequenceName="userseq" )
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userseq")
 	int userId;
 	String username;
 	String password;
