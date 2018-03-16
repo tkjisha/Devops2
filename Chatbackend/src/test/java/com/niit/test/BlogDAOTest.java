@@ -2,6 +2,8 @@ package com.niit.test;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.BeforeClass;
@@ -31,11 +33,21 @@ public class BlogDAOTest {
 	{
 		Blog b=new Blog();
 	//	b.setBlogId(3);
-		b.setBlogName("jis");
-		b.setBlogContent("hihi");
-		b.setCreateDate(new Date());
+		b.setBlogName("ji12");
+		b.setBlogContent("hihihelloandghr");
+		java.sql.Date sdt=null;
+		SimpleDateFormat dtformat=new SimpleDateFormat("MM/dd/yyyy");
+		try {
+		java.util.Date dt=dtformat.parse("20/02/2018");
+			
+			sdt = new java.sql.Date(dt.getTime());
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		} 
+		b.setCreateDate(sdt);
 		b.setStatus("a");
-		b.setUsername("jisha");
+		b.setUsername("jish");
 	//	BlogDAO bd=new BlogDAOImpl(null);
 		assertEquals("added",true,blogDAO.addBlog(b));
 	}
