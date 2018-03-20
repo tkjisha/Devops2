@@ -74,7 +74,7 @@ public class JobDAOImpl implements JobDAO{
 
 	@Override
 	public boolean applyJob() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override

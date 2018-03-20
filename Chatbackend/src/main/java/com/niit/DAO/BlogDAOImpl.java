@@ -29,7 +29,7 @@ public class BlogDAOImpl implements BlogDAO{
 	public boolean addBlog(Blog blog) {
 		try{
 			sessionFactory.getCurrentSession().persist(blog);
-			//listBlog("ji");
+			
 			return true;
 		}catch(Exception e)
 		{e.printStackTrace();

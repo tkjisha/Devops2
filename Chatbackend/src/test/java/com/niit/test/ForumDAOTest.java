@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -32,7 +33,6 @@ public class ForumDAOTest {
 	public void testaddForum()
 	{
 		Forum f=new Forum();
-	//	f.setForumId(3);
 		f.setForumName("abcd");
 		f.setForumContent("forum15");
 		java.sql.Date sdt=null;
@@ -51,7 +51,7 @@ public class ForumDAOTest {
 		assertEquals("added",true,forumDAO.addForum(f));
 	}
 	
-/*	@Test
+	@Test
 	public void testdeleteForum()
 	{
 		Forum f=forumDAO.getForum(3);
@@ -76,11 +76,19 @@ public class ForumDAOTest {
 			Forum f=(Forum)li.next();
 			System.out.print(f.getForumId()+f.getForumContent());
 		}
-	}*/
+	}
 	
-/*	@Test
+	@Test
+	public void testgetForum()
+	{
+		Forum f=forumDAO.getForum(1600);
+		System.out.println(f.getForumName()+","+f.getForumContent()+","+f.getUsername());
+	}
+	
+	@Ignore
+	@Test
 	public void test() {
 		fail("Not yet implemented");
-	}*/
+	}
 
 }

@@ -60,14 +60,31 @@ public class UsersDAOImpl implements UsersDAO{
 
 	@Override
 	public boolean approveUser(Users user) {
-		
-		return false;
+		try{
+			user.setStatus("approved");
+			sessionFactory.getCurrentSession().update(user);
+			return true;
+		}catch(Exception e)
+		{
+			
+			return false;
+		}
+
 	}
 
 	@Override
 	public boolean rejectUser(Users user) {
 		
-		return false;
+		try{
+			user.setStatus("rejected");
+			sessionFactory.getCurrentSession().update(user);
+			return true;
+		}catch(Exception e)
+		{
+			
+			return false;
+		}
+
 	}
 
 	@Override

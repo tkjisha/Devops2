@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -33,7 +34,6 @@ public class JobDAOTest {
 	{
 		
 		Job j=new Job();
-	//	j.setJobId(3);
 		j.setDescription("hardware engineer");
 		j.setDesig("Engineerr");
 		j.setCompany("TCS");
@@ -55,7 +55,7 @@ public class JobDAOTest {
 		assertEquals("added",true,jobDAO.addJob(j));
 	}
 	
-/*	@Test
+	@Test
 	public void testdeleteJob()
 	{
 		Job j=jobDAO.getJob(3);
@@ -80,11 +80,27 @@ public class JobDAOTest {
 			Job j=(Job)li.next();
 			System.out.print(j.getJobId()+j.getCompany());
 		}
-	}*/
+	}
 	
-	/*@Test
+		
+	@Test
+	public void testgetJob()
+	{
+		Job j=jobDAO.getJob(6250);
+		System.out.println(j.getDesig()+","+j.getLocation()+","+j.getDescription());
+	}
+	
+	@Ignore
+	@Test
+	public void testapplyJob()
+	{
+		
+	}
+	
+	@Ignore
+	@Test
 	public void test() {
 		fail("Not yet implemented");
-	}*/
+	}
 
 }

@@ -5,9 +5,11 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
-
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -32,7 +34,6 @@ public class BlogDAOTest {
 	public void testaddBlog()
 	{
 		Blog b=new Blog();
-	//	b.setBlogId(3);
 		b.setBlogName("ji12");
 		b.setBlogContent("hihihelloandghr");
 		java.sql.Date sdt=null;
@@ -48,11 +49,10 @@ public class BlogDAOTest {
 		b.setCreateDate(sdt);
 		b.setStatus("a");
 		b.setUsername("jish");
-	//	BlogDAO bd=new BlogDAOImpl(null);
 		assertEquals("added",true,blogDAO.addBlog(b));
 	}
 	
-/*	@Test
+	@Test
 	public void testdeleteBlog()
 	{
 		Blog b=blogDAO.getBlog(1);
@@ -67,11 +67,44 @@ public class BlogDAOTest {
 		b.setBlogName("aac");
 		assertEquals("updated",true,blogDAO.updateBlog(b));
 		
-	}*/
+	}
 	
-//	@Test
-/*	public void test() {
+	@Test
+	public void testlistBlog()
+	{
+		List lb=blogDAO.listBlog("jisha");
+		Iterator l=lb.iterator();
+		Blog b=(Blog)l.next();
+		System.out.println(b.getBlogContent());
+	}
+	
+	@Test
+	public void testgetBlog()
+	{
+		Blog b=blogDAO.getBlog(50);
+		System.out.println(b.getBlogName()+"'"+b.getBlogContent());
+	}
+	
+	
+	@Test
+	public void testapproveBlog()
+	{
+		Blog b=blogDAO.getBlog(50);
+		blogDAO.approveBlog(b);
+	}
+	
+	
+	@Test
+	public void testrejectBlog()
+	{
+		Blog b=blogDAO.getBlog(50);
+		blogDAO.rejectBlog(b);
+	}
+	
+	@Ignore
+	@Test
+	public void test() {
 		fail("Not yet implemented");
-	}*/
+	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -25,22 +26,22 @@ public class UsersDAOTest {
 		usersDAO=(UsersDAO) annotationConfigAppContext.getBean("usersDAO");
 	}
 	
-	@Test
+		@Test
 	public void testadduser()
 	{
 		Users u=new Users();
-	//	u.setUserId(1);
-		u.setUsername("acc");
-		u.setPassword("12345");
-		u.setEmail("acc@gmail.com");
+		u.setUsername("acas");
+		u.setPassword("1245");
+		u.setEmail("acoic@gmail.com");
 		u.setAddress("kannur");
 		u.setPhone("959356");
 		u.setRole("user");
+		u.setStatus("rejected");;
 		assertEquals("added",true,usersDAO.addUser(u));
 		
 	}
 	
-/*	@Test
+	@Test
 	public void testdeleteuser()
 	{
 		Users u=usersDAO.getUser(1);System.out.println(u);
@@ -66,11 +67,36 @@ public class UsersDAOTest {
 			Users u=(Users)li.next();
 			System.out.print(u.getUserId()+u.getRole());
 		}
-	}*/
+	}
 	
-/*	@Test
+	@Test
+	public void testgetUser()
+	{
+		Users u=usersDAO.getUser(50);
+		System.out.print("Get user");
+		System.out.print(u.getUsername()+u.getRole());
+	}
+	
+	
+	@Test
+	public void testapproveUser()
+	{
+		Users u=usersDAO.getUser(1250);
+		usersDAO.approveUser(u);
+	}
+	
+	
+	@Test
+	public void testrejectUser()
+	{
+		Users u=usersDAO.getUser(1200);
+		usersDAO.rejectUser(u);
+	}
+	
+	@Ignore
+	@Test
 	public void test() {
 		fail("Not yet implemented");
-	}*/
+	}
 
 }

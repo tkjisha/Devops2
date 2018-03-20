@@ -21,7 +21,14 @@ public class Users {
 	String address;
 	String phone;
 	String role;
+	String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public int getUserId() {
 		return userId;
 	}
