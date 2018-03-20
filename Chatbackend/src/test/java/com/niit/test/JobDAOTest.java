@@ -86,6 +86,7 @@ public class JobDAOTest {
 	@Test
 	public void testgetJob()
 	{
+		  
 		Job j=jobDAO.getJob(6250);
 		System.out.println(j.getDesig()+","+j.getLocation()+","+j.getDescription());
 	}
