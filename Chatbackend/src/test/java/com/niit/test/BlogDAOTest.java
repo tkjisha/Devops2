@@ -30,7 +30,7 @@ public class BlogDAOTest {
 		blogDAO=(BlogDAO) annotationConfigAppContext.getBean("blogDAO");
 	}
 	
-	@Test
+/*	@Test
 	public void testaddBlog()
 	{
 		Blog b=new Blog();
@@ -76,29 +76,32 @@ public class BlogDAOTest {
 		Iterator l=lb.iterator();
 		Blog b=(Blog)l.next();
 		System.out.println(b.getBlogContent());
-	}
+	}*/
 	
 	@Test
 	public void testgetBlog()
 	{
 		Blog b=blogDAO.getBlog(50);
+		
 		System.out.println(b.getBlogName()+"'"+b.getBlogContent());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testapproveBlog()
 	{
 		Blog b=blogDAO.getBlog(50);
 		blogDAO.approveBlog(b);
+		assertTrue("error",blogDAO.approveBlog(b));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testrejectBlog()
 	{
 		Blog b=blogDAO.getBlog(50);
 		blogDAO.rejectBlog(b);
+		assertTrue("error",blogDAO.rejectBlog(b));
 	}
 	
 	@Ignore
