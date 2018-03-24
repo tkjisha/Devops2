@@ -46,7 +46,7 @@ public class ForumDAOTest {
 			e.printStackTrace();
 		} 
 		f.setCreateDate(sdt);
-		f.setUsername("jisha");
+		f.setLoginname("jisha");
 	
 		assertEquals("added",true,forumDAO.addForum(f));
 	}
@@ -82,7 +82,7 @@ public class ForumDAOTest {
 	public void testgetForum()
 	{
 		Forum f=forumDAO.getForum(1600);
-		System.out.println(f.getForumName()+","+f.getForumContent()+","+f.getUsername());
+		System.out.println(f.getForumName()+","+f.getForumContent()+","+f.getLoginname());
 	}
 	
 	@Ignore

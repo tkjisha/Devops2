@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.Model.Blog;
+import com.niit.Model.BlogComment;
 
 @Repository("blogDAO") @Transactional
 public class BlogDAOImpl implements BlogDAO{
@@ -108,6 +109,51 @@ public class BlogDAOImpl implements BlogDAO{
 		lb=session.createQuery("from Blog where username='"+username+"'").list();
 		return lb;
 		
+	}
+
+
+	@Override
+	public boolean incrementLike(Blog blog) {
+		try{
+		int likes=blog.getLikes();
+		likes++;
+		blog.setLikes(likes);
+		sessionFactory.getCurrentSession().update(blog);
+		return true;
+		}
+		catch(Exception e)
+		{
+			
+			return false;
+		}
+	}
+
+
+	@Override
+	public boolean addBlogComment(BlogComment blogComment) {
+		
+		return false;
+	}
+
+
+	@Override
+	public boolean deleteBlogComment(BlogComment blogComment) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public BlogComment getBlogComment(int commentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<BlogComment> listBlogComments(int blogid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

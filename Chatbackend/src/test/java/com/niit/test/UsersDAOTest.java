@@ -26,37 +26,42 @@ public class UsersDAOTest {
 		usersDAO=(UsersDAO) annotationConfigAppContext.getBean("usersDAO");
 	}
 	
-		@Test
+	@Ignore
+	@Test
 	public void testadduser()
 	{
 		Users u=new Users();
-		u.setUsername("acas");
+		u.setLoginname("acas");
 		u.setPassword("1245");
 		u.setEmail("acoic@gmail.com");
 		u.setAddress("kannur");
 		u.setPhone("959356");
 		u.setRole("user");
-		u.setStatus("rejected");;
+		u.setStatus("rejected");
+		u.setUsername("acas");
 		assertEquals("added",true,usersDAO.addUser(u));
 		
 	}
 	
+	@Ignore
 	@Test
 	public void testdeleteuser()
 	{
-		Users u=usersDAO.getUser(1);System.out.println(u);
+		Users u=usersDAO.getUser("ji");System.out.println(u);
 		assertEquals("deleted",true,usersDAO.deleteUser(u));
 	}
 	
+	@Ignore
 	@Test
 	public void testupdateuser()
 	{
-		Users u=usersDAO.getUser(1);System.out.println(u);
+		Users u=usersDAO.getUser("ji");System.out.println(u);
 		u.setUsername("sss");
 		
 		assertEquals("updated",true,usersDAO.updateUser(u));
 	}
 	
+	@Ignore
 	@Test
 	public void testlistuser()
 	{
@@ -65,31 +70,32 @@ public class UsersDAOTest {
 		while(li.hasNext())
 		{
 			Users u=(Users)li.next();
-			System.out.print(u.getUserId()+u.getRole());
+			System.out.print(u.getRole());
 		}
 	}
+	
 	
 	@Test
 	public void testgetUser()
 	{
-		Users u=usersDAO.getUser(50);
+		Users u=usersDAO.getUser("ji");
 		System.out.print("Get user");
-		System.out.print(u.getUsername()+u.getRole());
+		System.out.print(u.getLoginname()+u.getRole());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testapproveUser()
 	{
-		Users u=usersDAO.getUser(1250);
+		Users u=usersDAO.getUser("ji");
 		usersDAO.approveUser(u);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testrejectUser()
 	{
-		Users u=usersDAO.getUser(1200);
+		Users u=usersDAO.getUser("ji");
 		usersDAO.rejectUser(u);
 	}
 	

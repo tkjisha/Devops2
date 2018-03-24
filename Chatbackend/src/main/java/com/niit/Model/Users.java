@@ -11,13 +11,15 @@ import javax.persistence.Table;
 @Table(name="users")
 public class Users {
 
+	
+//	@SequenceGenerator(name = "userseq",sequenceName="userseq" )
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userseq")
+//	int userId;
 	@Id
-	@SequenceGenerator(name = "userseq",sequenceName="userseq" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userseq")
-	int userId;
-	String username;
+	String loginname;
 	String password;
 	String email;
+	String username;	
 	String address;
 	String phone;
 	String role;
@@ -29,12 +31,12 @@ public class Users {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getUserId() {
+/*	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
+	}*/
 	public String getUsername() {
 		return username;
 	}
@@ -71,6 +73,11 @@ public class Users {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+	public String getLoginname() {
+		return loginname;
+	}
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
+	}
 	
 }

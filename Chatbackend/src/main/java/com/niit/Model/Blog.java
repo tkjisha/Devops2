@@ -22,7 +22,21 @@ public class Blog {
 	String blogName;
 	String blogContent;
 	Date createDate;
-	String username;
+	String loginname;
+	int likes;
+	
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+	public String getLoginname() {
+		return loginname;
+	}
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
+	}
 	String status;
 	public int getBlogId() {
 		return blogId;
@@ -48,12 +62,7 @@ public class Blog {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 	public String getStatus() {
 		return status;
 	}

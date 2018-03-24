@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.niit.Model.ApplyJob;
 import com.niit.Model.Job;
 
 @Repository("jobDAO") @Transactional
@@ -73,10 +74,11 @@ public class JobDAOImpl implements JobDAO{
 	}
 
 	@Override
-	public boolean applyJob() {
+	public boolean applyJob(ApplyJob apjob) {
 		
 		return false;
 	}
+	
 	@Override
 	public Job getJob(int JobId) {					
 			Job j=null;

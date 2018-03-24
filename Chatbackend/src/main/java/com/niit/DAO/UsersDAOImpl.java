@@ -1,5 +1,6 @@
 package com.niit.DAO;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -88,11 +89,14 @@ public class UsersDAOImpl implements UsersDAO{
 	}
 
 	@Override
-	public Users getUser(int userId) {
+	public Users getUser(String loginname) {
 		
 		Users u=null;
 		Session session=sessionFactory.getCurrentSession();
-		u=(Users) session.get(Users.class, userId);
+		List lu=session.createQuery("from Users where loginname='"+loginname+"'").list();
+		
+		Iterator i=lu.iterator();
+		u=(Users)i.next();
 		return u;
 	}
 

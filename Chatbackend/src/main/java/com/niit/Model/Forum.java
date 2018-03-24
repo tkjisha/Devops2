@@ -20,8 +20,7 @@ public class Forum {
 	String forumName;
 	String forumContent;
 	Date createDate;
-	String username;
-	
+	String loginname;	
 	
 	
 	public int getForumId() {
@@ -48,12 +47,13 @@ public class Forum {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public String getUsername() {
-		return username;
+	public String getLoginname() {
+		return loginname;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
+	
 	
 	
 }

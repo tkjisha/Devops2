@@ -11,6 +11,6 @@ public interface UsersDAO {
 	public boolean updateUser(Users user);
 	public boolean approveUser(Users user);
 	public boolean rejectUser(Users user);
-	public Users getUser(int blogId);
+	public Users getUser(String loginname);
 	public List<Users> listUsers();
 }
