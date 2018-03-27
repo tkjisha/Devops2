@@ -40,7 +40,7 @@ display:inline;list-style-type:none;}
 <li><a href="#/home">Home<i class="fa fa-home"></i></a></li>
 <li><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
 <li><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
-<li><a href="#/aboutus">About Us<i class="fa fa-sign-in"></i></a></li>
+<li><a href="#/blog">Blog<i class="fa fa-sign-in"></i></a></li>
 <li><a href="#/contactus">Contact Us<i class="fa fa-sign-in"></i></a></li>
 </ul>
 </div>

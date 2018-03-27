@@ -106,7 +106,7 @@ public class BlogDAOImpl implements BlogDAO{
 	public List<Blog> listBlog(String username) {
 		Session session=sessionFactory.getCurrentSession();
 		List lb=null;
-		lb=session.createQuery("from Blog where username='"+username+"'").list();
+		lb=session.createQuery("from Blog where loginname='"+username+"'").list();
 		return lb;
 		
 	}
@@ -131,8 +131,14 @@ public class BlogDAOImpl implements BlogDAO{
 
 	@Override
 	public boolean addBlogComment(BlogComment blogComment) {
-		
-		return false;
+		try{
+			sessionFactory.getCurrentSession().persist(blogComment);
+			
+			return true;
+		}catch(Exception e)
+		{e.printStackTrace();
+			return false;
+		}
 	}
 
 
@@ -145,15 +151,23 @@ public class BlogDAOImpl implements BlogDAO{
 
 	@Override
 	public BlogComment getBlogComment(int commentId) {
-		// TODO Auto-generated method stub
-		return null;
+		BlogComment bc=null;
+		Session session=sessionFactory.getCurrentSession();
+		bc=(BlogComment) session.get(BlogComment.class, commentId);
+		System.out.println(bc);
+		return bc;
 	}
 
 
 	@Override
-	public List<BlogComment> listBlogComments(int blogid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BlogComment> listBlogComments(int commentid) {
+		
+			Session session=sessionFactory.getCurrentSession();
+			List lb=null;
+			lb=session.createQuery("from BlogComment where commentid="+commentid).list();
+			return lb;
+			
+		
 	}
 
 	

@@ -58,7 +58,8 @@ public class ForumController {
 	public ResponseEntity<String> addforum(@RequestBody Forum forum)
 	{
 		forum.setCreateDate(new java.util.Date());
-		forum.setForumName("forum1");
+		forum.setForumName("forum3");
+		forum.setStatus("A");
 		if(forumDAO.addForum(forum))
 		{
 			return new ResponseEntity<String>("Forum Added",HttpStatus.OK);
@@ -97,6 +98,38 @@ public class ForumController {
 		else
 		{
 			return new ResponseEntity<String>("Update Failed",HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	@GetMapping(value="/approveforum/{forumId}")	
+	public ResponseEntity<String> approveforum(@PathVariable("forumId") int forumId)
+	{
+		Forum forum=(Forum)forumDAO.getForum(forumId);
+		forum.setStatus("A");
+		if(forumDAO.approveForum(forum))
+		{
+			return new ResponseEntity<String>("Forum approved",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("approve Failed",HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	@GetMapping(value="/rejectforum/{forumId}")	
+	public ResponseEntity<String> rejectforum(@PathVariable("forumId") int forumId)
+	{
+		Forum forum=(Forum)forumDAO.getForum(forumId);
+		forum.setStatus("NA");
+		if(forumDAO.rejectForum(forum))
+		{
+			return new ResponseEntity<String>("Forum rejected",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("reject Failed",HttpStatus.NOT_FOUND);
 		}
 		
 	}

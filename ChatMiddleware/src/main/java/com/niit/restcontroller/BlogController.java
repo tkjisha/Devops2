@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.DAO.BlogDAO;
 import com.niit.Model.Blog;
+import com.niit.Model.BlogComment;
 
 @RestController
 public class BlogController {
@@ -133,4 +134,66 @@ public class BlogController {
 		}
 		
 	}
+	
+	@GetMapping(value="/incrementlike/{blogId}")	
+	public ResponseEntity<String> incrementLikes(@PathVariable("blogId") int blogId)
+	{
+		Blog blog=(Blog)blogDAO.getBlog(blogId);
+		if(blogDAO.incrementLike(blog))
+		{
+			return new ResponseEntity<String>("Success",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>(" Failed",HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	@PostMapping(value="/addblogcomment")	
+	public ResponseEntity<String> addblogcomment(@RequestBody BlogComment blogcomment)
+	{
+		blogcomment.setCommentDate(new java.util.Date());
+		blogcomment.setCommentText("blogcomment2");
+		
+		
+		if(blogDAO.addBlogComment(blogcomment))
+		{
+			return new ResponseEntity<String>("Blog Comment Added",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("Add Failed",HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	@GetMapping(value="/getblogcomment")
+	public ResponseEntity<BlogComment> getBlogComment()
+	{
+		BlogComment bc=blogDAO.getBlogComment(50);
+		if(bc.equals(null))
+		{
+			return new ResponseEntity<BlogComment>(bc,HttpStatus.NOT_FOUND);
+		}
+		else
+		{
+			return new ResponseEntity<BlogComment>(bc,HttpStatus.OK);
+		}
+	}
+	
+	@GetMapping(value="/listblogcomment/{commentId}")
+	public ResponseEntity<BlogComment> listBlogComment(@PathVariable("commentId") int commentId )
+	{
+		BlogComment bc=blogDAO.getBlogComment(commentId);
+		if(bc.equals(null))
+		{
+			return new ResponseEntity<BlogComment>(bc,HttpStatus.NOT_FOUND);
+		}
+		else
+		{
+			return new ResponseEntity<BlogComment>(bc,HttpStatus.OK);
+		}
+	}
+	
 }

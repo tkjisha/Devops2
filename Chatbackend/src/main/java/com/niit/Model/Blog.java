@@ -23,6 +23,7 @@ public class Blog {
 	String blogContent;
 	Date createDate;
 	String loginname;
+	String status;
 	int likes;
 	
 	public int getLikes() {
@@ -37,7 +38,7 @@ public class Blog {
 	public void setLoginname(String loginname) {
 		this.loginname = loginname;
 	}
-	String status;
+	
 	public int getBlogId() {
 		return blogId;
 	}
