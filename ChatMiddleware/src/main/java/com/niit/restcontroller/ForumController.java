@@ -138,8 +138,11 @@ public class ForumController {
 	@PostMapping(value="/addforumcomment")	
 	public ResponseEntity<String> addforumcomment(@RequestBody ForumComment forumcomment)
 	{
-		forumcomment.setFmCommentDate(new java.util.Date());
+		System.out.println("addforumcomment");
+		forumcomment.setLoginame("ji");
+		forumcomment.setForumId(2601);
 		forumcomment.setFcommentText("forumcomment4");
+		forumcomment.setFmCommentDate(new java.util.Date());
 		
 		
 		if(forumDAO.addForumComment(forumcomment))
