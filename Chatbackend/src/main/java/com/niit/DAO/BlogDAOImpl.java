@@ -144,8 +144,14 @@ public class BlogDAOImpl implements BlogDAO{
 
 	@Override
 	public boolean deleteBlogComment(BlogComment blogComment) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		try{
+			sessionFactory.getCurrentSession().delete(blogComment);
+			return true;
+		}catch(Exception e)
+		{
+			return false;
+		}
 	}
 
 
@@ -154,17 +160,17 @@ public class BlogDAOImpl implements BlogDAO{
 		BlogComment bc=null;
 		Session session=sessionFactory.getCurrentSession();
 		bc=(BlogComment) session.get(BlogComment.class, commentId);
-		System.out.println(bc);
+		System.out.println("blogcomment"+bc);
 		return bc;
 	}
 
 
 	@Override
-	public List<BlogComment> listBlogComments(int commentid) {
+	public List<BlogComment> listBlogComments(String username) {
 		
 			Session session=sessionFactory.getCurrentSession();
 			List lb=null;
-			lb=session.createQuery("from BlogComment where commentid="+commentid).list();
+			lb=session.createQuery("from BlogComment where loginname='"+username+"'").list();
 			return lb;
 			
 		

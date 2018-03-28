@@ -154,7 +154,7 @@ public class BlogController {
 	public ResponseEntity<String> addblogcomment(@RequestBody BlogComment blogcomment)
 	{
 		blogcomment.setCommentDate(new java.util.Date());
-		blogcomment.setCommentText("blogcomment2");
+		blogcomment.setCommentText("blogcomment4");
 		
 		
 		if(blogDAO.addBlogComment(blogcomment))
@@ -182,18 +182,33 @@ public class BlogController {
 		}
 	}
 	
-	@GetMapping(value="/listblogcomment/{commentId}")
-	public ResponseEntity<BlogComment> listBlogComment(@PathVariable("commentId") int commentId )
+	@GetMapping(value="/listblogcomment/{loginname}")
+	public ResponseEntity<List<BlogComment>> getListBlogComment(@PathVariable("loginname") String loginname )
 	{
-		BlogComment bc=blogDAO.getBlogComment(commentId);
-		if(bc.equals(null))
+		List lbc=blogDAO.listBlogComments(loginname);
+		if(lbc.equals(null))
 		{
-			return new ResponseEntity<BlogComment>(bc,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<BlogComment>>(lbc,HttpStatus.NOT_FOUND);
 		}
 		else
 		{
-			return new ResponseEntity<BlogComment>(bc,HttpStatus.OK);
+			return new ResponseEntity<List<BlogComment>>(lbc,HttpStatus.OK);
 		}
+	}
+	
+	@GetMapping(value="/deleteblogcomment/{commentId}")	
+	public ResponseEntity<String> deleteblogcomment(@PathVariable("commentId") int commentId)
+	{
+		BlogComment blogcomment=(BlogComment)blogDAO.getBlogComment(commentId);
+		if(blogDAO.deleteBlogComment(blogcomment))
+		{
+			return new ResponseEntity<String>("BlogComment deletd",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("delete Failed",HttpStatus.NOT_FOUND);
+		}
+		
 	}
 	
 }

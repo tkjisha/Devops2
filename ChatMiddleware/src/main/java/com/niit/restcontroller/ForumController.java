@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.DAO.ForumDAO;
 import com.niit.Model.Forum;
+import com.niit.Model.ForumComment;
 
 @RestController
 public class ForumController {
@@ -133,4 +134,24 @@ public class ForumController {
 		}
 		
 	}
+	
+	@PostMapping(value="/addforumcomment")	
+	public ResponseEntity<String> addforumcomment(@RequestBody ForumComment forumcomment)
+	{
+		forumcomment.setFmCommentDate(new java.util.Date());
+		forumcomment.setFcommentText("forumcomment4");
+		
+		
+		if(forumDAO.addForumComment(forumcomment))
+		{
+			return new ResponseEntity<String>("Forum Comment Added",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("Add Failed",HttpStatus.NOT_FOUND);
+		}
+		
+	}
+   
+
 }

@@ -18,6 +18,6 @@ public interface BlogDAO {
     public boolean addBlogComment(BlogComment blogComment);
     public boolean deleteBlogComment(BlogComment blogComment);
     public BlogComment getBlogComment(int commentId);
-    public List<BlogComment> listBlogComments(int blogid);
+    public List<BlogComment> listBlogComments(String username);
 
 }
