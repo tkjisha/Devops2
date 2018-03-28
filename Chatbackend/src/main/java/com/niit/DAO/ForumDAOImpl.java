@@ -133,7 +133,15 @@ public class ForumDAOImpl implements ForumDAO{
 	@Override
 	public boolean deleteForumComment(ForumComment forumComment) {
 		
-		return false;
+		try{
+			sessionFactory.getCurrentSession().delete(forumComment);
+			
+			return true;
+		}catch(Exception e)
+		{e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 

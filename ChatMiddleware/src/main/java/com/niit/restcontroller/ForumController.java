@@ -139,9 +139,7 @@ public class ForumController {
 	public ResponseEntity<String> addforumcomment(@RequestBody ForumComment forumcomment)
 	{
 		System.out.println("addforumcomment");
-		forumcomment.setLoginame("ji");
-		forumcomment.setForumId(2601);
-		forumcomment.setFcommentText("forumcomment4");
+		forumcomment.setFcommentText("forumcomment5");
 		forumcomment.setFmCommentDate(new java.util.Date());
 		
 		
@@ -155,6 +153,33 @@ public class ForumController {
 		}
 		
 	}
+	
+	@GetMapping(value="/getforumcomment")
+	public ResponseEntity<ForumComment> getforumComment()
+	{
+		ForumComment fc=forumDAO.getForumComment(150);
+		if(fc.equals(null))
+		{
+			return new ResponseEntity<ForumComment>(fc,HttpStatus.NOT_FOUND);
+		}
+		else
+		{
+			return new ResponseEntity<ForumComment>(fc,HttpStatus.OK);
+		}
+	}
    
-
+	@GetMapping(value="/deleteforumcomment/{fcommentId}")	
+	public ResponseEntity<String> deleteforumcomment(@PathVariable("fcommentId") int fcommentId)
+	{
+		ForumComment forumcomment=(ForumComment)forumDAO.getForumComment(fcommentId);
+		if(forumDAO.deleteForumComment(forumcomment))
+		{
+			return new ResponseEntity<String>("ForumComment deletd",HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<String>("delete Failed",HttpStatus.NOT_FOUND);
+		}
+		
+	}
 }

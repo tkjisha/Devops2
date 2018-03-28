@@ -2,11 +2,15 @@ package com.niit.Model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="forumcomment")
 public class ForumComment {
 
 	@Id
@@ -14,7 +18,7 @@ public class ForumComment {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="forumcommentseq")
 	int fcommentId;	
 	String fcommentText;
-	String loginame;
+	String loginname;
 	int forumId;
 	Date fmCommentDate;
 	
@@ -25,11 +29,11 @@ public class ForumComment {
 		this.fcommentId = fcommentId;
 	}
 	
-	public String getLoginame() {
-		return loginame;
+	public String getLoginname() {
+		return loginname;
 	}
-	public void setLoginame(String loginame) {
-		this.loginame = loginame;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 	public String getFcommentText() {
 		return fcommentText;
