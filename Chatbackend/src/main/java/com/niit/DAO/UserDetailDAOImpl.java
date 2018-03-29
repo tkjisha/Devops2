@@ -1,14 +1,17 @@
 package com.niit.DAO;
 
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.Model.UserDetail;
 
-@Repository("userdetDAO") @Transactional
+@Repository("userdetailDAO") @Transactional
 public class UserDetailDAOImpl implements UserDetailDAO{
 
 	
@@ -37,14 +40,23 @@ public class UserDetailDAOImpl implements UserDetailDAO{
 	@Override
 	public boolean checkLogin(UserDetail userDetail) {
 		
-		return false;
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from UserDetail where loginname=:loginname and password=:password");
+		query.setParameter("loginname",userDetail.getLoginname());
+		query.setParameter("password",userDetail.getPassword());
+		UserDetail ud=(UserDetail) query.list().get(0);
+		if(ud==null)
+			return false;
+		else
+			return true;
 	}
 
+	
 	@Override
 	public boolean updateOnlineStatus(String status, UserDetail userDetail) {
 		try{
 			userDetail.setIsonline(status);
-			sessionFactory.getCurrentSession().save(userDetail);
+			sessionFactory.getCurrentSession().update(userDetail);
 			return true;
 		}catch(Exception e)
 		{
@@ -55,7 +67,11 @@ public class UserDetailDAOImpl implements UserDetailDAO{
 	@Override
 	public UserDetail getUser(String loginname) {
 		
-		return null;
+		UserDetail ud=null;
+		Session session=sessionFactory.getCurrentSession();
+		ud=(UserDetail) session.get(UserDetail.class, loginname);
+		System.out.println(ud.getAddress()+ud.getPassword());
+		return ud;
 	}
 
 }

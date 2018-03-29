@@ -29,6 +29,7 @@ public class JobDAOTest {
 		jobDAO=(JobDAO) annotationConfigAppContext.getBean("jobDAO");
 	}
 	
+	@Ignore
 	@Test
 	public void testaddJob()
 	{
@@ -55,6 +56,7 @@ public class JobDAOTest {
 		assertEquals("added",true,jobDAO.addJob(j));
 	}
 	
+	@Ignore
 	@Test
 	public void testdeleteJob()
 	{
@@ -62,6 +64,7 @@ public class JobDAOTest {
 		assertEquals("deleted",true,jobDAO.deleteJob(j));
 	}
 	
+	@Ignore
 	@Test
 	public void testupdateJob()
 	{
@@ -69,6 +72,7 @@ public class JobDAOTest {
 		j.setDescription("job vacancy");
 		assertEquals("updated",true,jobDAO.updateJob(j));
 	}
+	
 	
 	@Test
 	public void testlistjob()
@@ -82,7 +86,7 @@ public class JobDAOTest {
 		}
 	}
 	
-		
+	@Ignore	
 	@Test
 	public void testgetJob()
 	{
