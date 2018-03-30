@@ -14,13 +14,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/.7.0/css/font-awesome.min.css">
+
 <script src="MyRouteConfig.js"></script>
+<script src="c_blog/BlogController.js"></script>
+
 <style>
 li{
 display:inline;list-style-type:none;}
 </style>
 </head>
 <body ng-app="myApp">
+
 <jsp:include page="header.html"></jsp:include>
 <nav id="navbar-red" class="navbar navbar-default navbar-static-top" role="navigation">
 <div class="container">
