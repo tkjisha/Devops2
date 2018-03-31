@@ -30,7 +30,7 @@ public class BlogController {
 	@GetMapping(value="/listblog")
 	public ResponseEntity<List<Blog>> getListBlogs()
 	{
-		List<Blog> listblog=blogDAO.listBlog("jish");
+		List<Blog> listblog=blogDAO.listBlog("ji");
 		if(listblog.size()>0)
 		{
 			return new ResponseEntity<List<Blog>>(listblog,HttpStatus.OK);
@@ -58,9 +58,12 @@ public class BlogController {
 	@PostMapping(value="/addblog")	
 	public ResponseEntity<String> addblog(@RequestBody Blog blog)
 	{
-		blog.setCreateDate(new java.util.Date());
-		blog.setBlogName("blogname1");
-		blog.setStatus("a");
+		//blog.setBlogName("blogname1");
+		//blog.setBlogContent("asdqwe123");
+		blog.setCreateDate(new java.util.Date());		
+		blog.setStatus("a");		
+		blog.setLikes(0);
+		blog.setLoginname("ji");
 		if(blogDAO.addBlog(blog))
 		{
 			return new ResponseEntity<String>("Blog Added",HttpStatus.OK);

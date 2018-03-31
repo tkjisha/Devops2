@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">  
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
@@ -35,17 +35,19 @@ display:inline;list-style-type:none;}
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
+<span class="icon-bar"></span>
 </button>
 </ul>
 </div>
 
 <div class="collapse navbar-collapse" id="bs-demo-navbar-collapse-1">
 <ul style="text-align:right;margin-right:25px;">
-<li><a href="#/home">Home<i class="fa fa-home"></i></a></li>
+<li><a href="/home">Home<i class="fa fa-home"></i></a></li>
 <li><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
 <li><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
 <li><a href="#/blog">Blog<i class="fa fa-sign-in"></i></a></li>
 <li><a href="#/contactus">Contact Us<i class="fa fa-sign-in"></i></a></li>
+<li><a href="#/aboutus">About Us<i class="fa fa-sign-in"></i></a></li>
 </ul>
 </div>
 </nav>
