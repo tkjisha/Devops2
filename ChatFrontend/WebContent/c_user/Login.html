@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="UserController">
+
+<center><h3>LOGIN</h3></center>
+<table align="center" cellspacing="10">
+<tr>
+	<td>Login Name</td>
+</tr>
+<tr>
+	<td><input type="text" height="50" width="100" name="loginname" ng-model="user.loginname"/></td>
+</tr>
+<tr>
+	<td>Password</td>
+</tr>
+<tr>
+	<td><input type="password" height="50" width="100" name="password" ng-model="user.password" /></td>
+</tr>
+<tr><td><input type="submit" value="Login" ng-click="login()"/></td></tr>
+</table>
+
+</div>
+
+</body>
+</html>

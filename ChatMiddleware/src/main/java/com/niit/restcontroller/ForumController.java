@@ -58,8 +58,10 @@ public class ForumController {
 	@PostMapping(value="/addforum")	
 	public ResponseEntity<String> addforum(@RequestBody Forum forum)
 	{
+	//	forum.setForumName("forum3");
+	//	forum.setForumContent("forumcontent1");
 		forum.setCreateDate(new java.util.Date());
-		forum.setForumName("forum3");
+		forum.setLoginname("jis");
 		forum.setStatus("A");
 		if(forumDAO.addForum(forum))
 		{

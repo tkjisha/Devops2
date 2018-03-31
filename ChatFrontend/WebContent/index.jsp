@@ -17,6 +17,9 @@
 
 <script src="MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
+<script src="c_forum/ForumController.js"></script>
+<script src="c_user/UserController.js"></script>
+
 
 <style>
 li{
@@ -47,7 +50,7 @@ display:inline;list-style-type:none;}
 <li><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
 <li><a href="#/blog">Blog<i class="fa fa-sign-in"></i></a></li>
 <li><a href="#/contactus">Contact Us<i class="fa fa-sign-in"></i></a></li>
-<li><a href="#/aboutus">About Us<i class="fa fa-sign-in"></i></a></li>
+<li><a href="#/forum">Forum<i class="fa fa-sign-in"></i></a></li>
 </ul>
 </div>
 </nav>

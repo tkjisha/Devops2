@@ -43,7 +43,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	{
 		console.log("inside blog delete");
 		$http.get('http://localhost:8091/ChatMiddleware/deleteblog/'+blogId)
-		.then(function(response)
+		.then(fetchAllBlogs(),function(response)
 				{
 					console.log('Deleted');
 					$location.path('/blog')
