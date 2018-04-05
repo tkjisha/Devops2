@@ -37,7 +37,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 					console.log('Status Text'+response.statusText);
 					$location.path('/UpdateBlog')
 				});
-	}
+	};
 	
 	$scope.deleteBlog=function(blogId)
 	{
@@ -48,7 +48,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 					console.log('Deleted');
 					$location.path('/blog')
 				});
-	}
+	};
 	
 	$scope.incrementLike=function(blogId)
 	{
@@ -59,7 +59,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 					console.log('Incremented');
 					$location.path('/blog')
 				});
-	}
+	};
 	
 	fetchAllBlogs();
 });

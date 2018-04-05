@@ -5,7 +5,7 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 {
 	$scope.user={loginname:'',password:'',role:'',username:'',emailid:'',mobileno:'',address:'',isonline:''}
 	
-	$rootScope.login=function()
+	/*$rootScope.login=function()
 	{
 		console.log("inside login");
 		$http.post('http://localhost:8091/ChatMiddleware/login',$scope.user)
@@ -14,7 +14,7 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 				console.log(response.status);
 				$scope.user=response.data;
 				$rootScope.currentUser=response.data;
-				$cookieStore.put('userDetails',user.data);
+				$cookieStore.put('userDetails',response.data);
 				console.log($rootScope.currentUser.role);
 				if($rootScope.currentUser.role=="ROLEADMIN")
 					{
@@ -26,8 +26,8 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 					console.log("User home");
 					
 				}
-				$location.path('/Userhome');
+				$location.path("/Userhome");
 			});
-	}
+	};*/
 	
 });

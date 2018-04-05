@@ -36,7 +36,7 @@ myApp.controller("ForumController",function($scope,$http,$location)
 					console.log('Deleted');
 					$location.path('/Forum')
 				});
-	}
+	};
 	
 	fetchAllForums();
 });

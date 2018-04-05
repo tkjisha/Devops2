@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<script src="MyRouteConfig.js"></script>
+<script src="c_blog/BlogController.js"></script>
+<script src="c_forum/ForumController.js"></script>
+<script src="c_user/UserController.js"></script>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+
+<div class="header">
+
+
+<nav id="navbar-red" class="navbar navbar-inverse navbar-static-top" role="navigation">
+<div class="container">
+<ul class="nav navbar-nav" >
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="bs-demo-navbar-collapse-1">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</ul>
+</div>
+<div class="collapse navbar-collapse" id="bs-demo-navbar-collapse-1">
+<ul class="nav navbar-nav" >
+<li><a href="#/"><img src="image/CHAT2.jpg" height="60" width="100"/><B>CHATCOLLABORATE</B></a></li>
+<li><a href="#/home">Home<i class="fa fa-home"></i></a></li>
+<li><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
+<li><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
+<li><a href="#">AboutUs<i class="fa fa-user"></i></a></li>
+<li><a href="#/Contact">ContactUs<i class="fa fa-phone"></i></a></li>
+<li><a href="#/blog">Blog<i class="fa fa-blogger"></i></a></li>
+<li><a href="#/forum">Forum<i class="fa fa-phone"></i></a></li>
+</ul>
+</div>
+</nav>
+</div>
+
+<div class="maincontent">
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr bgcolor="grey"><td colspan="2" >LetsChat</td></tr>
+<tr bgcolor="lightblue" ><td height="250"><div ng-view> </div></td></tr>
+</table>
+</div>
+
+<div class="footer">
+<table width="100%" height="30%">
+<tr bgcolor="grey"><td ><B>copyright 2018</B></td></tr>
+</table>
+</div>
+</body>
+</html>
