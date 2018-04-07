@@ -4,18 +4,20 @@ import java.util.Date;
 
 public class OutputMessage extends Message {
 	
-	private Date MessageTime;
+	private Date messageTime;
 	public OutputMessage(Message original,Date msgTime)
 	{
 		this.setId(original.getId());
 		this.setMessage(original.getMessage());
+		messageTime=msgTime;
 	}
 	public Date getMessageTime() {
-		return MessageTime;
+		return messageTime;
 	}
 	public void setMessageTime(Date messageTime) {
-		MessageTime = messageTime;
+		this.messageTime = messageTime;
 	}
+	
 
 	
 }

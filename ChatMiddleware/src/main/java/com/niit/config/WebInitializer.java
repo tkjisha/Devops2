@@ -2,10 +2,9 @@ package com.niit.config;
 
 
 import java.nio.charset.StandardCharsets;
-
+import javax.servlet.Filter;
 import javax.servlet.ServletRegistration;
 
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

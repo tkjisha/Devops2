@@ -30,7 +30,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.editBlog=function(blogId)
 	{
 		console.log("inside blog edit");
-		$http.get('http://localhost:8091/ChatMiddleware/getblog/'+blogId)
+		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;
@@ -57,6 +57,18 @@ myApp.controller("BlogController",function($scope,$http,$location)
 		.then(fetchAllBVlog(),function(response)
 				{
 					console.log('Incremented');
+					$location.path('/blog')
+				});
+	};
+	
+	$scope.updateBlog=function(blogId)
+	{
+		console.log("inside blog update");
+		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId)
+		.then(fetchAllBlogs(),function(response)
+				{
+					$scope.blog=response.data;
+					console.log('Status Text'+response.statusText);
 					$location.path('/blog')
 				});
 	};
