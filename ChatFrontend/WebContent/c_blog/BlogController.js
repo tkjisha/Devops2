@@ -9,7 +9,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.insertBlog=function()
 	{
 		console.log("inside blog controller insert");
-		$http.post("http://localhost:8091/ChatMiddleware/addblog",$scope.blog)
+		$http.post("http://localhost:8093/ChatMiddleware/addblog",$scope.blog)
 		.then(fetchAllBlogs(),function(response)
 		{
 			console.log('Status Text'+response.statusText);
@@ -19,7 +19,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	function fetchAllBlogs()
 	{
 		console.log("fetching all blogs");
-		$http.get("http://localhost:8091/ChatMiddleware/listblog",$scope.blog)
+		$http.get("http://localhost:8093/ChatMiddleware/listblog",$scope.blog)
 		.then(function(response)
 		{
 			$scope.blogdata=response.data;
@@ -30,7 +30,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.editBlog=function(blogId)
 	{
 		console.log("inside blog edit");
-		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId)
+		$http.get('http://localhost:8093/ChatMiddleware/updateblog/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;
@@ -42,7 +42,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.deleteBlog=function(blogId)
 	{
 		console.log("inside blog delete");
-		$http.get('http://localhost:8091/ChatMiddleware/deleteblog/'+blogId)
+		$http.get('http://localhost:8093/ChatMiddleware/deleteblog/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					console.log('Deleted');
@@ -53,7 +53,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.incrementLike=function(blogId)
 	{
 		console.log("inside like increment");
-		$http.get('http://localhost:8091/ChatMiddleware/incrementlike/'+blogId)
+		$http.get('http://localhost:8093/ChatMiddleware/incrementlike/'+blogId)
 		.then(fetchAllBVlog(),function(response)
 				{
 					console.log('Incremented');
@@ -64,7 +64,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.updateBlog=function(blogId)
 	{
 		console.log("inside blog update");
-		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId)
+		$http.get('http://localhost:8093/ChatMiddleware/updateblog/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;

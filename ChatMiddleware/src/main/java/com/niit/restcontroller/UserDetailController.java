@@ -1,5 +1,8 @@
 package com.niit.restcontroller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,13 +56,15 @@ public class UserDetailController {
 	}
 	
 	@PostMapping(value="/login")	
-	public ResponseEntity<UserDetail> checkLogin(@RequestBody UserDetail userDetail)
+	public ResponseEntity<UserDetail> checkLogin(@RequestBody UserDetail userDetail,HttpServletRequest req)
 	{
 		
 		if(userdetailDAO.checkLogin(userDetail))
 		{
 			UserDetail tmpuser=userdetailDAO.getUser(userDetail.getLoginname());
 			userdetailDAO.updateOnlineStatus("y", tmpuser);
+			HttpSession session=req.getSession();
+			session.setAttribute("userDetail", tmpuser);System.out.println("udcntrllr");
 			return new ResponseEntity<UserDetail>(tmpuser,HttpStatus.OK);
 		}
 		else

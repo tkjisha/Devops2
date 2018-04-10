@@ -40,7 +40,7 @@ public class UserDetailDAOImpl implements UserDetailDAO{
 	@Override
 	public boolean checkLogin(UserDetail userDetail) {
 		
-		Session session=sessionFactory.getCurrentSession();
+		Session session=sessionFactory.getCurrentSession();System.out.println("checklogin");
 		Query query=session.createQuery("from UserDetail where loginname=:loginname and password=:password");
 		query.setParameter("loginname",userDetail.getLoginname());
 		query.setParameter("password",userDetail.getPassword());

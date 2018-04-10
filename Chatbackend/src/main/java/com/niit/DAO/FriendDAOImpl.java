@@ -44,7 +44,7 @@ public class FriendDAOImpl implements FriendDAO{
 	public boolean deleteFriendRequest(int friendId) {
 		try{
 				Session session=sessionFactory.getCurrentSession();		
-				Friend friend=(Friend)session.get(Friend.class,friendId);System.out.println(friend);
+				Friend friend=(Friend)session.get(Friend.class,friendId);
 				session.delete(friend);System.out.println("del");
 								
 				return true;
@@ -67,7 +67,7 @@ public class FriendDAOImpl implements FriendDAO{
 	@Override
 	public List<Friend> showAllFriend(String loginname) {
 		Session session=sessionFactory.getCurrentSession();
-		List lf=null;
+		List<Friend> lf=null;
 		Query query= session.createQuery("from Friend where loginname=:currentuser and status='A'");
 		query.setParameter("currentuser", loginname);
 		lf=query.list();
@@ -90,7 +90,7 @@ public class FriendDAOImpl implements FriendDAO{
 	public boolean acceptFriendRequest(int friendId) {
 		Session session=sessionFactory.getCurrentSession();
 		Friend friend=(Friend)session.get(Friend.class,friendId);
-		friend.setStatus("A");System.out.println("updt");
+		friend.setStatus("A");
 		session.update(friend);		
 		return true;
 	}

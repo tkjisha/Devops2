@@ -23,11 +23,20 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 					}
 				else
 				{
-					console.log("User home");
+					console.log("User home"+$rootScope.currentUser.role);
 					
 				}
 				$location.path('/Userhome');
 			});
 	};
+	
+	$rootScope.logout=function()
+	{
+		console.log('Logout Function');
+		delete $rootScope.currentUser;
+		$cookieStore.remove('userDetails');
+		$location.path("/logout");
+	};
+
 	
 });

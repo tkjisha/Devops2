@@ -41,6 +41,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
+
 </button>
 </ul>
 </div>
@@ -48,16 +49,30 @@
 <ul class="nav navbar-nav" >
 <li><a href="#/"><img src="image/CHAT2.jpg" height="60" width="100"/><B>CHATCOLLABORATE</B></a></li>
 <li><a href="#/home">Home<i class="fa fa-home"></i></a></li>
-<li><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
-<li><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
-<li><a href="#">AboutUs<i class="fa fa-user"></i></a></li>
-<li><a href="#/Contact">ContactUs<i class="fa fa-phone"></i></a></li>
-<li><a href="#/blog">Blog<i class="fa fa-blogger"></i></a></li>
-<li><a href="#/forum">Forum<i class="fa fa-phone"></i></a></li>
+<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
+<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
+<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#">AboutUs<i class="fa fa-user"></i></a></li>
+<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/Contact">ContactUs<i class="fa fa-phone"></i></a></li>
+<li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/blog">Blog<i class="fa fa-blogger"></i></a></li>
+<li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/forum">Forum<i class="fa fa-phone"></i></a></li>
+</ul>
+<div>
+<ul>
+<li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><font color="white">Welcome {{currentUser.loginname}} </font>
+<form ng-controller="UserController"><button type="button" class="btn btn-info" ng-click="logout()">Logout</button></form>
+</li>
 </ul>
 </div>
+
+</div>
+
+ 
+
 </nav>
 </div>
+<!-- removed above -->
+
+
 
 <div class="maincontent">
 <table width="100%" cellspacing="0" cellpadding="0">
