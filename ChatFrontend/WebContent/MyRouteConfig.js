@@ -14,6 +14,8 @@ myApp.config(function($routeProvider)
 			.when("/UpdateBlog",{templateUrl:"c_blog/UpdateBlog.html"})
 			.when("/contactus",{templateUrl:"template/Contact.html"})
 			.when("/forum",{templateUrl:"c_forum/Forum.html"})
+			.when("/chat",{templateUrl:"c_chat/Chat.html"})
+			.when("/friend",{templateUrl:"c_friend/Friends.html"})
 			.when("/Userhome",{templateUrl:"c_user/Userhome.html"})
 		});
 myApp.run(function($rootScope,$cookieStore)

@@ -16,6 +16,7 @@ public class ChatController {
 	@SendTo("/topic/message")
 	public OutputMessage sendMessage(Message message)
 	{
+		System.out.println("chtcntrl");
 		return new OutputMessage(message,new Date());
 	}
 }
