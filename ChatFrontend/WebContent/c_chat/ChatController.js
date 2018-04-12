@@ -9,6 +9,7 @@ myApp.controller("ChatController",function($scope,$rootScope,ChatService)
 		
 		$scope.addMessage=function()
 		{
+			console.log("send");
 			ChatService.send($rootScope.currentUser.loginname+":"+$scope.message);
 			$scope.message="";
 		};

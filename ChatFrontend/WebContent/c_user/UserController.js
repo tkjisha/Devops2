@@ -3,7 +3,7 @@
  */
 myApp.controller("UserController",function($scope,$http,$location,$rootScope,$cookieStore)
 {
-	$scope.user={loginname:'',password:'',role:'',username:'',emailid:'',mobileno:'',address:'',isonline:''}
+	$scope.user={loginname:'',password:'',role:'ROLEUSER',username:'',emailid:'',mobileno:'',address:'',isonline:'n'}
 	
 	$rootScope.login=function()
 	{
@@ -38,5 +38,15 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 		$location.path("/logout");
 	};
 
+	$rootScope.register=function()
+	{
+		console.log("inside register");
+		
+		$http.post('http://localhost:8091/ChatMiddleware/registeruser',$scope.user)
+		.then(function(response)
+		{
+			console.log(response.status);
+		});
+	};
 	
 });

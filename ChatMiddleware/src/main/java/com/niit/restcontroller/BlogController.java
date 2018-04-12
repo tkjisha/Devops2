@@ -58,8 +58,7 @@ public class BlogController {
 	@PostMapping(value="/addblog")	
 	public ResponseEntity<String> addblog(@RequestBody Blog blog)
 	{
-		//blog.setBlogName("blogname1");
-		//blog.setBlogContent("asdqwe123");
+		
 		blog.setCreateDate(new java.util.Date());		
 		blog.setStatus("a");		
 		blog.setLikes(0);

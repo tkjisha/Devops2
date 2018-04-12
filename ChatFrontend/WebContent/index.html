@@ -11,6 +11,7 @@
 <script src="c_user/UserController.js"></script>
 <script src="c_chat/ChatController.js"></script>
 <script src="c_chat/ChatService.js"></script> 
+<script src="c_friend/FriendController.js"></script> 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,10 +54,10 @@
 <li><a href="#/home">Home<i class="fa fa-home"></i></a></li>
 <li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
 <li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
-<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#">AboutUs<i class="fa fa-user"></i></a></li>
-<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/Contact">ContactUs<i class="fa fa-phone"></i></a></li>
+<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/about">AboutUs<i class="fa fa-user"></i></a></li>
+<li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/contact">ContactUs<i class="fa fa-phone"></i></a></li>
 <li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/blog">Blog<i class="fa fa-blogger"></i></a></li>
-<li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/forum">Forum<i class="fa fa-phone"></i></a></li>
+<li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/forum">Forum<i class="fa fa-comments"></i></a></li>
 <li ng-show="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/">Update Profile<i class="fa fa-user"></i></a></li>
 <li ng-show="currentUser.role=='ROLEUSER'"><a href="#/chat">Chat<i class="fa fa-comments"></i></a></li>
 <li ng-show="currentUser.role=='ROLEUSER'"><a href="#/friend">Friend<i class="fa fa-user-plus"></i></a></li>
@@ -82,13 +83,13 @@
 <div class="maincontent">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr bgcolor="grey"><td colspan="2" >LetsChat</td></tr>
-<tr bgcolor="lightblue" ><td height="300"><div ng-view> </div></td></tr>
+<tr bgcolor="lightblue" ><td height="400"><div ng-view> </div></td></tr>
 </table>
 </div>
 
 <div class="footer">
 <table width="100%" height="30%">
-<tr bgcolor="grey"><td ><B>copyright 2018</B></td></tr>
+<tr bgcolor="grey"><td ><B><center>&copy;&nbsp;copyright 2018</center></B></td></tr>
 </table>
 </div>
 </body>

@@ -1,24 +1,45 @@
+<center><h3>REGISTER</h3></center>
 
-<table align="center">
-<tr>
-		<td colspan="2">REGISTER</td>
-	</tr>
-<tr>
-<td>Username </td><td><input type="text" name="username"></td>
-</tr>
-<tr>
-<td>Password </td><td><input type="password" name="password"></td>
-</tr>
-<tr>
-<td>Email </td><td><input type="text" name="email"></td>
-</tr>
-<tr>
-<td>Address </td><td><input type="text" name="address"></td>
-</tr>
-<tr>
-<td>Phone </td><td><input type="text" name="phone"></td>
-</tr>
-<tr>
-<td ><input type="submit" value="Register"></td>
-</tr>
-</table>
+<div ng-controller="UserController">
+
+<div class="container-fluid">
+
+<form id="registerform" method="post">
+
+<div class="row" >
+    <div class="col-md-6 col-md-offset-4">
+        <div class="form-group">
+        	<label>Login Name</label>
+            <input class="form-control"  name="loginname" placeholder="Enter Name" ng-model="user.loginname" type="text" required>
+        </div>
+        <div class="form-group">
+        	<label>Password</label>
+            <input class="form-control"  name="password" placeholder="Enter Password" ng-model="user.password" type="password" required>
+        </div>
+        <div class="form-group">
+        <label>User Name</label>
+            <input class="form-control"  name="username" placeholder="Enter Userame" ng-model="user.username" type="text" required>
+        </div>
+        <div class="form-group">
+        	<label>Email Id</label>
+            <input class="form-control" name="emailid"  placeholder="Enter Mail" ng-model="user.emailid" type="email" required>
+        </div>
+        <div class="form-group">
+        	<label>Mobile Number</label>
+            <input class="form-control" name="mobileno" placeholder="Enter Mobile" ng-model="user.mobileno" type="text" >
+        </div>
+        <div class="form-group">
+        	<label>Address</label>
+            <input class="form-control" name="address" placeholder="Enter Address" ng-model="user.address" type="text" >
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-primary" type="submit" ng-click="register()">Register</button>
+</div>
+
+</div>
+</form>
+</div>
+</div>

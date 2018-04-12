@@ -20,6 +20,7 @@ public class UserDetailController {
 	@Autowired
 	UserDetailDAO userdetailDAO;
 	
+	HttpSession session;
 	@GetMapping(value="/userdetdemo")
 	public ResponseEntity<String> userdettest()
 	{
@@ -43,7 +44,8 @@ public class UserDetailController {
 	@PostMapping(value="/registeruser")	
 	public ResponseEntity<String> registerUser(@RequestBody UserDetail userDetail)
 	{
-		
+		userDetail.setRole("ROLEUSER");
+		userDetail.setIsonline("N");
 		if(userdetailDAO.registerUser(userDetail))
 		{
 			return new ResponseEntity<String>("User Details Added",HttpStatus.OK);
@@ -63,7 +65,7 @@ public class UserDetailController {
 		{
 			UserDetail tmpuser=userdetailDAO.getUser(userDetail.getLoginname());
 			userdetailDAO.updateOnlineStatus("y", tmpuser);
-			HttpSession session=req.getSession();
+			session=req.getSession();
 			session.setAttribute("userDetail", tmpuser);System.out.println("udcntrllr");
 			return new ResponseEntity<UserDetail>(tmpuser,HttpStatus.OK);
 		}

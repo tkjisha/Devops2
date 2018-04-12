@@ -68,7 +68,7 @@ public class FriendController {
 	@GetMapping(value="/showAllFriend")
 	public ResponseEntity<List<Friend>> showAllFriend(HttpSession session)
 	{
-		/*UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+	/*	UserDetail ud= (UserDetail) session.getAttribute("userDetail");
 		String loginname=ud.getLoginname();*/
 		List<Friend> l=friendDAO.showAllFriend("ji");
 		if(l.size()>0)

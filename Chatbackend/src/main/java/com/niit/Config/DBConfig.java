@@ -56,6 +56,7 @@ public class DBConfig {
 		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.ForumComment.class);
 		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.UserDetail.class);
 		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.Friend.class);
+		localSessionFacBuilder.addAnnotatedClass(com.niit.Model.ProfilePicture.class);
 		SessionFactory sessionFactory=localSessionFacBuilder.buildSessionFactory();
 		System.out.println("Session Factory Object Created");
 		return sessionFactory;
