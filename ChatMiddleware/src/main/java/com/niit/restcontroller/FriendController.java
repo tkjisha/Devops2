@@ -70,9 +70,9 @@ public class FriendController {
 	@GetMapping(value="/showAllFriend")
 	public ResponseEntity<List<Friend>> showAllFriend(HttpSession session)
 	{
-	/*	UserDetail ud= (UserDetail) session.getAttribute("userDetail");
-		String loginname=ud.getLoginname();*/
-		List<Friend> l=friendDAO.showAllFriend("ji");
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
+		List<Friend> l=friendDAO.showAllFriend(loginname);
 		if(l.size()>0)
 		{
 			return new ResponseEntity<List<Friend>>(l,HttpStatus.OK);
@@ -87,9 +87,9 @@ public class FriendController {
 	@GetMapping(value="/showPendingRequestList")
 	public ResponseEntity<List<Friend>> showPendingRequestList(HttpSession session)
 	{
-		/*UserDetail ud= (UserDetail) session.getAttribute("userDetail");
-		String loginname=ud.getLoginname();*/
-		List<Friend> l=friendDAO.showPendingRequestList("ji");
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
+		List<Friend> l=friendDAO.showPendingRequestList(loginname);
 		if(l.size()>0)
 		{
 			return new ResponseEntity<List<Friend>>(l,HttpStatus.OK);
@@ -104,9 +104,9 @@ public class FriendController {
 	@GetMapping(value="/showSuggestedFriend")
 	public ResponseEntity<List<UserDetail>> showSuggestedFriend(HttpSession session)
 	{
-		/*UserDetail ud= (UserDetail) session.getAttribute("userDetail");
-		String loginname=ud.getLoginname();*/
-		List<UserDetail> listSuggestedFriend=friendDAO.showSuggestedFriend("jis");
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
+		List<UserDetail> listSuggestedFriend=friendDAO.showSuggestedFriend(loginname);
 		if(listSuggestedFriend.size()>0)
 		{
 			return new ResponseEntity<List<UserDetail>>(listSuggestedFriend,HttpStatus.OK);
