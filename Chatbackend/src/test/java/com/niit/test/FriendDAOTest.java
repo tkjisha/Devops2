@@ -11,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.niit.DAO.FriendDAO;
 import com.niit.Model.Friend;
+import com.niit.Model.UserDetail;
 
 
 
@@ -32,8 +33,8 @@ public class FriendDAOTest {
 	public void testsendFriendRequest()
 	{
 		Friend friend=new Friend();
-		friend.setLoginname("jis");
-		friend.setFriendloginname("jis");
+		friend.setLoginname("sree");
+		friend.setFriendloginname("sree");
 		assertTrue("Req Error",friendDAO.sendFriendRequest(friend));
 		
 	}
@@ -43,8 +44,8 @@ public class FriendDAOTest {
 	public void testshowAllFriend()
 	{
 		Friend friend=new Friend();
-		friend.setLoginname("ji");
-		List lf=friendDAO.showAllFriend("ji");
+		friend.setLoginname("jis");
+		List lf=friendDAO.showAllFriend("jis");
 		Iterator it1= lf.iterator();
 		while(it1.hasNext()){
 			
@@ -59,8 +60,8 @@ public class FriendDAOTest {
 	public void testshowPendingRequestList()
 	{
 		Friend friend=new Friend();
-		friend.setLoginname("ji");
-		List lf=friendDAO.showPendingRequestList("ji");
+		friend.setLoginname("jis");
+		List lf=friendDAO.showPendingRequestList("jis");
 		Iterator it1= lf.iterator();
 		while(it1.hasNext()){
 			
@@ -69,18 +70,17 @@ public class FriendDAOTest {
 		}	
 				
 	}
-	
+	@Ignore
 	@Test
 	public void testshowsuggestedFriend()
 	{
 		Friend friend=new Friend();
 		friend.setLoginname("ji");
-		List lf=friendDAO.showSuggestedFriend("ji");
-		Iterator it1= lf.iterator();
-		while(it1.hasNext()){
+		List<UserDetail> lf=friendDAO.showSuggestedFriend("ji");
+		int cnt=0;
+		while(cnt<lf.size()){			
 			
-			Friend f=(Friend)it1.next();
-			System.out.print(f.getFriendloginname()+f.getLoginname()+f.getStatus());
+			System.out.print(lf.get(cnt));
 		}	
 				
 	}
@@ -89,15 +89,15 @@ public class FriendDAOTest {
 	public void testdeleteFriendRequest()
 	{
 		
-		assertTrue("Delete Error",friendDAO.deleteFriendRequest(150));
+		assertTrue("Delete Error",friendDAO.deleteFriendRequest(1150));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void testacceptFriendRequest()
 	{
 		Friend friend=new Friend();		
-		assertTrue("Accept Error",friendDAO.acceptFriendRequest(100));
+		assertTrue("Accept Error",friendDAO.acceptFriendRequest(1));
 	}
 	
 	@Ignore

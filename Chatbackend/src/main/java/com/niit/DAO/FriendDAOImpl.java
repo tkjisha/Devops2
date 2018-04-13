@@ -1,8 +1,10 @@
 package com.niit.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +41,7 @@ public class FriendDAOImpl implements FriendDAO{
 					}
 	}
 
-	@Override
-	
+	@Override	
 	public boolean deleteFriendRequest(int friendId) {
 		try{
 				Session session=sessionFactory.getCurrentSession();		
@@ -55,13 +56,19 @@ public class FriendDAOImpl implements FriendDAO{
 	}
 
 	@Override
-	public List<Friend> showSuggestedFriend(String loginname) {
+	public List<UserDetail> showSuggestedFriend(String loginname) {
 		Session session=sessionFactory.getCurrentSession();
-		List lf=null;
-		Query query= session.createQuery("from Friend where loginname=:currentuser ");
-		query.setParameter("currentuser", loginname);
-		lf=query.list();
-		return lf;
+		SQLQuery query=session.createSQLQuery("select loginname from userdetail where loginname not in (select friendloginname from Friend where loginname='"+loginname+"')and loginname!='"+loginname+"'");
+		List<Object> suggestFriendname=(List<Object>)query.list();
+		List<UserDetail> suggestFriendList=new ArrayList<UserDetail>();
+		int i=0;
+		while(i<suggestFriendname.size())
+		{
+			UserDetail userDetail=(UserDetail) session.get(UserDetail.class, (String)suggestFriendname.get(i));
+			suggestFriendList.add(userDetail);
+			i++;
+		}
+		return suggestFriendList;
 	}
 
 	@Override

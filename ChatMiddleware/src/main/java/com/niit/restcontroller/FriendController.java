@@ -23,6 +23,8 @@ public class FriendController {
 	@Autowired
 	FriendDAO friendDAO;
 	
+	
+	
 	@PostMapping(value="/sendFriendRequest")
 	public ResponseEntity<String> sendFriendRequest(@RequestBody Friend friend)
 	{
@@ -32,7 +34,7 @@ public class FriendController {
 		}
 		else{
 			
-			return new ResponseEntity<String>("Request failedd",HttpStatus.OK);
+			return new ResponseEntity<String>("Request failedd",HttpStatus.NOT_FOUND);
 		}
 		
 	}
@@ -46,7 +48,7 @@ public class FriendController {
 		}
 		else{
 			
-			return new ResponseEntity<String>("Delete failedd",HttpStatus.OK);
+			return new ResponseEntity<String>("Delete failedd",HttpStatus.NOT_FOUND);
 		}
 		
 	}
@@ -60,7 +62,7 @@ public class FriendController {
 		}
 		else{
 			
-			return new ResponseEntity<String>("Accept failedd",HttpStatus.OK);
+			return new ResponseEntity<String>("Accept failedd",HttpStatus.NOT_FOUND);
 		}
 		
 	}
@@ -100,18 +102,18 @@ public class FriendController {
 	}
 	
 	@GetMapping(value="/showSuggestedFriend")
-	public ResponseEntity<List<Friend>> showSuggestedFriend(HttpSession session)
+	public ResponseEntity<List<UserDetail>> showSuggestedFriend(HttpSession session)
 	{
 		/*UserDetail ud= (UserDetail) session.getAttribute("userDetail");
 		String loginname=ud.getLoginname();*/
-		List<Friend> l=friendDAO.showSuggestedFriend("ji");
-		if(l.size()>0)
+		List<UserDetail> listSuggestedFriend=friendDAO.showSuggestedFriend("jis");
+		if(listSuggestedFriend.size()>0)
 		{
-			return new ResponseEntity<List<Friend>>(l,HttpStatus.OK);
+			return new ResponseEntity<List<UserDetail>>(listSuggestedFriend,HttpStatus.OK);
 		}
 		else
 		{
-			return new ResponseEntity<List<Friend>>(l,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<UserDetail>>(listSuggestedFriend,HttpStatus.NOT_FOUND);
 		}
 		
 	}
