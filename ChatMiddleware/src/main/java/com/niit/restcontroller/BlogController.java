@@ -41,10 +41,10 @@ public class BlogController {
 		}
 	}
 	
-	@GetMapping(value="/getblog")
-	public ResponseEntity<Blog> getBlogs()
+	@GetMapping(value="/getblog/{blogId}")
+	public ResponseEntity<Blog> getBlogs(@PathVariable("blogId") int  blogId)
 	{
-		Blog b=blogDAO.getBlog(2100);
+		Blog b=blogDAO.getBlog(blogId);
 		if(b.equals(null))
 		{
 			return new ResponseEntity<Blog>(b,HttpStatus.NOT_FOUND);

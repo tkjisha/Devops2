@@ -1,9 +1,10 @@
 /**
  * 
  */
-myApp.controller("BlogController",function($scope,$http,$location)
+myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 {
 	$scope.blog={blogId:0,blogName:'',blogContent:'',createDate:'',status:'',likes:0,loginname:''}
+	$rootScope.blog1={blogName:'',blogContent:'',createDate:'',status:'',likes:0,loginname:''}
 	$scope.blogdata;
 	
 	$scope.insertBlog=function()
@@ -14,6 +15,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 		{
 			console.log('Status Text'+response.statusText);
 		});
+		
 	};
 	
 	function fetchAllBlogs()
@@ -29,12 +31,13 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	
 	$scope.editBlog=function(blogId)
 	{
-		console.log("inside blog edit");
-		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId)
-		.then(fetchAllBlogs(),function(response)
-				{
-					$scope.blog=response.data;
-					console.log('Status Text'+response.statusText);
+		console.log("inside blog edit"+blogId);
+		$http.get('http://localhost:8091/ChatMiddleware/getblog/'+blogId)
+		.then(function(response)
+				{console.log('Status Text');
+					$rootScope.blog1=response.data;
+					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);
+					$scope.bid=$rootScope.blog1.blogId;
 					$location.path('/UpdateBlog')
 				});
 	};
@@ -54,7 +57,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	{
 		console.log("inside like increment");
 		$http.get('http://localhost:8091/ChatMiddleware/incrementlike/'+blogId)
-		.then(fetchAllBVlog(),function(response)
+		.then(fetchAllBlogs(),function(response)
 				{
 					console.log('Incremented');
 					$location.path('/blog')
@@ -64,7 +67,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	$scope.updateBlog=function(blogId)
 	{
 		console.log("inside blog update");
-		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId)
+		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId,$scope.blog1)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;

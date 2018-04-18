@@ -2,13 +2,14 @@
 <div ng-controller="FriendController">
 <div align="center">
 <table border="1">
+<b>Friends</b>
 <tr><td>Friend Name</td><td>Operation</td></tr>
 <tr ng-repeat="friend in acceptfrienddata">
 	<td>{{friend.friendloginname}}{{friend.friendId}}</td>
 	<td><input type="submit"  value="Delete" ng-click="deleteFriendRequest(friend.friendId)" /></td>
 </table>
 <br/><br/><br/>
-Pending Friend Request
+<b>Pending Friend Request</b>
 <table border="1">
 <tr><td>Friend Name</td><td>Operation</td></tr>
 <tr ng-repeat="friend in pendingfrienddata">
@@ -17,12 +18,12 @@ Pending Friend Request
 </table>
 
 <br/><br/><br/>
- Friend Suggestions for you
+ <b>Friend Suggestions for you</b>
  <table border="1">
 <tr><td>Friend Name</td><td>Operation</td></tr>
 <tr ng-repeat="friend in suggestedfrienddata">
-	<td>{{friend.loginname}}{{friend.friendId}}</td>
-	<td><input type="submit"  value="Send Request" ng-click="sendFriendRequest(friend.friendId)" /></td>
+	<td>{{friend.loginname}}{{friend.friendId}}{{friend.friendloginname}}</td>
+	<td><input type="submit"  value="Send Request" ng-click="sendFriendRequest(friend.friendloginname)" /></td>
 </table>
 
 </div>

@@ -35,7 +35,7 @@ public class FriendDAOTest {
 		Friend friend=new Friend();
 		friend.setLoginname("sree");
 		friend.setFriendloginname("sree");
-		assertTrue("Req Error",friendDAO.sendFriendRequest(friend));
+		assertTrue("Req Error",friendDAO.sendFriendRequest("sree"));
 		
 	}
 	
@@ -70,17 +70,17 @@ public class FriendDAOTest {
 		}	
 				
 	}
-	@Ignore
+	
 	@Test
 	public void testshowsuggestedFriend()
 	{
 		Friend friend=new Friend();
-		friend.setLoginname("ji");
-		List<UserDetail> lf=friendDAO.showSuggestedFriend("ji");
+		friend.setLoginname("jis");
+		List<UserDetail> lf=friendDAO.showSuggestedFriend("jis");
 		int cnt=0;
 		while(cnt<lf.size()){			
 			
-			System.out.print(lf.get(cnt));
+			System.out.print(lf.get(cnt));cnt++;
 		}	
 				
 	}
@@ -92,7 +92,7 @@ public class FriendDAOTest {
 		assertTrue("Delete Error",friendDAO.deleteFriendRequest(1150));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testacceptFriendRequest()
 	{

@@ -25,10 +25,10 @@ public class FriendController {
 	
 	
 	
-	@PostMapping(value="/sendFriendRequest")
-	public ResponseEntity<String> sendFriendRequest(@RequestBody Friend friend)
+	@PostMapping(value="/sendFriendRequest/{friendloginname}")
+	public ResponseEntity<String> sendFriendRequest(@PathVariable("friendloginname") String friendloginname)
 	{
-		if(friendDAO.sendFriendRequest(friend))
+		if(friendDAO.sendFriendRequest(friendloginname))
 		{
 			return new ResponseEntity<String>("Request sent",HttpStatus.OK);
 		}

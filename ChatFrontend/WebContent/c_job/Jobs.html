@@ -1,0 +1,42 @@
+<div ng-controller="JobController">
+
+<form id="jobform" method="post"></form>
+<table align="center" border="1" width="60%">
+<tr>
+<th>DESIGNATION</th>
+<th>COMPANY</th>
+<th>DESCRIPTION</th>
+<th>SALARY</th>
+<th>LOCATION</th>
+<th>POSTDATE</th>
+<th>ACTION</th>
+</tr>
+<tr ng-repeat="jobs in jobdata">
+<td>{{jobs.desig}}</td>
+<td>{{jobs.company}}</td>
+<td>{{jobs.description}}</td>
+<td>{{jobs.sal}}</td>
+<td>{{jobs.location}}</td>
+<td>{{jobs.postdate}}</td>
+<td>
+	<input ng-show="currentUser.role=='ROLEUSER'" type="submit" value="APPLY" ng-click="applyJob(jobs.jobId)"/>
+	<input ng-show="currentUser.role=='ROLEADMIN'" type="submit" value="DELETE " ng-click="deleteJob(jobs.jobId)"/>
+</td>
+
+</tr>
+</table>
+</form>
+<br/><br/><br/><br/>
+<div align="center" ng-show="currentUser.role=='ROLEADMIN'">
+Click to Add new Job <input  type="submit" value="ADD " ng-click="add()"/>
+</div>
+
+
+<div align="center">
+ <input ng-show="currentUser.role=='ROLEUSER'" type="submit" value="VIEW MY JOBS " ng-click="view()"/>
+</div>
+
+
+
+
+</div>

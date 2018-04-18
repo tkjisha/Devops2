@@ -28,9 +28,11 @@ public class FriendDAOImpl implements FriendDAO{
 	}
 	
 	@Override
-	public boolean sendFriendRequest(Friend friend) {
+	public boolean sendFriendRequest(String friendloginname) {
 		
 		try{
+			Friend friend=new Friend();
+			friend.setFriendloginname(friendloginname);
 			friend.setStatus("p");
 			sessionFactory.getCurrentSession().save(friend);
 					

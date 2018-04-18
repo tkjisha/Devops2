@@ -6,7 +6,7 @@ import com.niit.Model.Friend;
 import com.niit.Model.UserDetail;
 public interface FriendDAO {
 
-	public boolean sendFriendRequest(Friend friend);
+	public boolean sendFriendRequest(String friendloginname);//change
 	public boolean deleteFriendRequest(int friendId);
 	public List<UserDetail> showSuggestedFriend(String loginname);
 	public List<Friend> showAllFriend(String loginname);

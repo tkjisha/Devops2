@@ -66,7 +66,7 @@ public class UserDetailController {
 			UserDetail tmpuser=userdetailDAO.getUser(userDetail.getLoginname());
 			userdetailDAO.updateOnlineStatus("y", tmpuser);
 			session=req.getSession();
-			session.setAttribute("userDetail", tmpuser);System.out.println("udcntrllr");
+			session.setAttribute("userDetail", tmpuser);System.out.println("udcntrllr"+userDetail);
 			return new ResponseEntity<UserDetail>(tmpuser,HttpStatus.OK);
 		}
 		else

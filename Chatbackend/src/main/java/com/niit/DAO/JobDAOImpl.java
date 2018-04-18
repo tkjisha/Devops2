@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,8 +76,15 @@ public class JobDAOImpl implements JobDAO{
 
 	@Override
 	public boolean applyJob(ApplyJob apjob) {
-		
-		return false;
+try{
+			
+			sessionFactory.getCurrentSession().persist(apjob);
+			
+			return true;
+		}catch(Exception e)
+		{
+			return false;
+		}
 	}
 	
 	@Override
@@ -86,6 +94,16 @@ public class JobDAOImpl implements JobDAO{
 			j=(Job) session.get(Job.class, JobId);
 			return j;
 		
+	}
+	@Override
+	public List<ApplyJob> showMyJobs(String loginname) {
+		
+		Session session=sessionFactory.getCurrentSession();
+		List<ApplyJob> lapjob=null;
+		Query query= session.createQuery("from Job where jobId in(select jobId from ApplyJob where loginname=:currentuser) ");
+		query.setParameter("currentuser", loginname);
+		lapjob=query.list();
+		return lapjob;
 	}
 
 }

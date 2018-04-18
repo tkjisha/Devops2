@@ -13,4 +13,5 @@ public interface JobDAO {
 	public List<Job> listJob();
 	public Job getJob(int JobId);
 	public boolean applyJob(ApplyJob apjob);
+	public List<ApplyJob> showMyJobs(String loginname);
 }

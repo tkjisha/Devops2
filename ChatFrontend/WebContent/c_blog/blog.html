@@ -19,6 +19,7 @@
 <th>BlogContent</th>
 <th>Likes</th>
 <th>Action</th>
+
 </tr>
 <tr ng-repeat="blog in blogdata">
 <td>{{blog.blogName}}</td>
@@ -28,6 +29,7 @@
 	<input type="submit" value="EDIT BLOG" ng-click="editBlog(blog.blogId)"/>
 	<input type="submit" value="DELETE BLOG" ng-click="deleteBlog(blog.blogId)"/>
 </td>
+
 </tr>
 </table>
 </form>

@@ -2,6 +2,8 @@ package com.niit.restcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.DAO.JobDAO;
+import com.niit.Model.ApplyJob;
 import com.niit.Model.Blog;
 import com.niit.Model.Job;
+import com.niit.Model.UserDetail;
 
 @RestController
 public class JobController {
@@ -56,15 +60,15 @@ public class JobController {
 	}
 	
 	@PostMapping(value="/addjob")	
-	public ResponseEntity<String> addblog(@RequestBody Job job)
+	public ResponseEntity<String> addjob(@RequestBody Job job)
 	{
 		
-		job.setDescription("Handle classes");
-		job.setCompany("NIIT");
-		job.setPostdate(new java.util.Date());
-		job.setCtc(12000);
+	/*	job.setDescription("Handle classes");
+		job.setCompany("NIIT");*/
+	job.setPostdate(new java.util.Date());
+	/*		job.setCtc(12000);
 		job.setSal(10000);
-		job.setLocation("kannur");
+		job.setLocation("kannur");*/
 		
 		if(jobDAO.addJob(job))
 		{
@@ -105,9 +109,45 @@ public class JobController {
 			else
 			{
 				return new ResponseEntity<String>("update Failed",HttpStatus.NOT_FOUND);
-			}
+			}  
 			
 		}
 	 
+	 @PostMapping(value="/applyJob/{jobId}")
+		public ResponseEntity<String> applyJob(@PathVariable("jobId") int jobId,HttpSession session){
+			
+		 	UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+			String loginname=ud.getLoginname(); 
+		     System.out.println(jobId);
+			ApplyJob ajob=new ApplyJob();
+			ajob.setJobId(jobId);
+			ajob.setLoginname(loginname);
+			ajob.setApplyDate(new java.util.Date());
+			if(jobDAO.applyJob(ajob))
+			{
+				return new ResponseEntity<String>("Job Applied",HttpStatus.OK);
+			}
+			else
+			{
+				return new ResponseEntity<String>("Apply Failed",HttpStatus.NOT_FOUND);
+			}		
+					
+		}
 	 
+	 @GetMapping(value="/showmyjobs")
+		public ResponseEntity<List<ApplyJob>> showMyJobs(HttpSession session)
+		{
+		/*	UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+			String loginname=ud.getLoginname();*/
+			List<ApplyJob> l=jobDAO.showMyJobs("ji");
+			if(l.size()>0)
+			{
+				return new ResponseEntity<List<ApplyJob>>(l,HttpStatus.OK);
+			}
+			else
+			{
+				return new ResponseEntity<List<ApplyJob>>(l,HttpStatus.NOT_FOUND);
+			}
+			
+		}
 }
