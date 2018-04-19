@@ -16,7 +16,7 @@ myApp.controller("ChatController",function($scope,$rootScope,ChatService)
 		
 		ChatService.receive().then(null,null,function(message)
 		{
-			$scope.message.push(message);
+			$scope.messages.push(message);
 		});
 	
 	});

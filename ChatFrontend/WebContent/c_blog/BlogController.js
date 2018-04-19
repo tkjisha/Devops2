@@ -6,7 +6,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.blog={blogId:0,blogName:'',blogContent:'',createDate:'',status:'',likes:0,loginname:''}
 	$rootScope.blog1={blogName:'',blogContent:'',createDate:'',status:'',likes:0,loginname:''}
 	$scope.blogdata;
-	
+	$scope.bid;
 	$scope.insertBlog=function()
 	{
 		console.log("inside blog controller insert");
@@ -38,6 +38,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 					$rootScope.blog1=response.data;
 					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);
 					$scope.bid=$rootScope.blog1.blogId;
+					console.log("id"+$scope.bid);
 					$location.path('/UpdateBlog')
 				});
 	};

@@ -8,7 +8,7 @@ myApp.service('ChatService',function($q,$timeout)
 	
 	service.RECONNECT_TIMEOUT=30000;
 	service.SOCKET_URL=base_url+"/chat";
-	service.CHAT_TOPIC="/queue/message";
+	service.CHAT_TOPIC="/topic/message";
 	service.CHAT_BROKER="/app/chat";
 	
 	service.send=function(message)
@@ -37,8 +37,8 @@ myApp.service('ChatService',function($q,$timeout)
 	var getMessage=function(data)
 	{
 		console.log("getmsg");
-		var message=JSON.parse(data),out={};
-		out.message=message.message;
+		var message=JSON.parse(data),out={};console.log("getmsg1"+message);
+		out.message=message.message;console.log("getmsg1"+message);
 		out.time=new Date(message.time);
 		return out;
 	}

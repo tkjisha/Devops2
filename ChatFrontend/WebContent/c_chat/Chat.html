@@ -1,12 +1,12 @@
 <center><b>CHAT</b></center>
 <div ng-controller="ChatController">
 
-<form submit="addMessage()" name="chatmsg">
+<form  name="chatmsg">
 <div class="row" align="center">
 <Label>Message </Label><br>
 <input type="text" placeholder="Enter ur message" ng-model="message">
 
-<button ng-disabled="message.length>140 || message.length==0">Send</button>
+<button class="btn btn-primary" type="submit" ng-click="addMessage()">Send</button>
 </div>
 </form>
 
@@ -14,7 +14,7 @@ Message
 <div align="center">
 	<p ng-repeat="message in messages"></p>
 	<time>{{message.time}}</time>
-	<span>{{message.messages}}</span>
+	<span>{{message.message}}</span>
 </div>
 
 </div>
