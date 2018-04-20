@@ -24,14 +24,14 @@ public class WebResolver extends WebMvcConfigurerAdapter{
 		return iRVResolver;
 	}
 	
-	@Override
+/*	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) 
 	{
 		    registry.addResourceHandler("/resources/**")
 		    .addResourceLocations("/WEB-INF/resources/");
-	}
+	}*/
 	 
-/*	 @Bean(name = "multipartResolver")  
+	/* @Bean(name = "multipartResolver")  
 	 public CommonsMultipartResolver getMultipartResolver(){
 		   
 		    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(); 

@@ -11,7 +11,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 	function getAllFriends()
 	{
 		console.log("inside getfriend");
-		$http.get("http://localhost:8091/ChatMiddleware/showAllFriend")
+		$http.get("http://localhost:8090/ChatMiddleware/showAllFriend")
 		.then(function(response)
 		{
 			$scope.acceptfrienddata=response.data;
@@ -23,7 +23,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 	function getPendingFriends()
 	{
 		console.log("inside pendingfriend");
-		$http.get("http://localhost:8091/ChatMiddleware/showPendingRequestList")
+		$http.get("http://localhost:8090/ChatMiddleware/showPendingRequestList")
 		.then(function(response)
 		{
 			$scope.pendingfrienddata=response.data;
@@ -35,7 +35,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 	function getSuggestedFriends()
 	{
 		console.log("inside suggestedfriend");
-		$http.get("http://localhost:8091/ChatMiddleware/showSuggestedFriend")
+		$http.get("http://localhost:8090/ChatMiddleware/showSuggestedFriend")
 		.then(function(response)
 		{
 			$scope.suggestedfrienddata=response.data;
@@ -47,7 +47,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 	$scope.deleteFriendRequest=function(friendId)
 	{
 		console.log("inside deletefriend");
-		$http.get('http://localhost:8091/ChatMiddleware/deleteFriendRequest/'+friendId)
+		$http.get('http://localhost:8090/ChatMiddleware/deleteFriendRequest/'+friendId)
 		.then(getAllFriends(),function(response)
 		{
 			console.log("Deleted");
@@ -58,7 +58,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 	$scope.acceptFriendRequest=function(friendId)
 	{
 		console.log("inside acceptfriend");
-		$http.get('http://localhost:8091/ChatMiddleware/acceptFriendRequest/'+friendId)
+		$http.get('http://localhost:8090/ChatMiddleware/acceptFriendRequest/'+friendId)
 		.then(getAllFriends(),function(response)
 		{
 			console.log("Accepted");
@@ -72,7 +72,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 		$scope.friend.loginname=$rootScope.currentUser.loginname;
 		$scope.friend.friendloginname=friendloginname;
 		console.log($scope.friend.loginname+":"+$scope.friend.friendloginname);
-		$http.post('http://localhost:8091/ChatMiddleware/sendFriendRequest/'+friendloginname)
+		$http.post('http://localhost:8090/ChatMiddleware/sendFriendRequest/'+friendloginname)
 		.then(function(response)
 		{
 			console.log("Requst send");

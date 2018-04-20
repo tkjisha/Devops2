@@ -2,6 +2,8 @@ package com.niit.restcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.niit.DAO.BlogDAO;
 import com.niit.Model.Blog;
 import com.niit.Model.BlogComment;
+import com.niit.Model.UserDetail;
 
 @RestController
 public class BlogController {
@@ -41,6 +44,20 @@ public class BlogController {
 		}
 	}
 	
+	@GetMapping(value="/getallblog")
+	public ResponseEntity<List<Blog>> getAllBlogs()
+	{
+		List<Blog> listblog=blogDAO.getAllBlog();
+		if(listblog.size()>0)
+		{
+			return new ResponseEntity<List<Blog>>(listblog,HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<List<Blog>>(listblog,HttpStatus.NOT_FOUND);
+		}
+	}
+	
 	@GetMapping(value="/getblog/{blogId}")
 	public ResponseEntity<Blog> getBlogs(@PathVariable("blogId") int  blogId)
 	{
@@ -56,13 +73,14 @@ public class BlogController {
 	}
 	
 	@PostMapping(value="/addblog")	
-	public ResponseEntity<String> addblog(@RequestBody Blog blog)
+	public ResponseEntity<String> addblog(@RequestBody Blog blog,HttpSession session)
 	{
-		
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
 		blog.setCreateDate(new java.util.Date());		
 		blog.setStatus("a");		
 		blog.setLikes(0);
-		blog.setLoginname("ji");
+		blog.setLoginname(loginname);
 		if(blogDAO.addBlog(blog))
 		{
 			return new ResponseEntity<String>("Blog Added",HttpStatus.OK);

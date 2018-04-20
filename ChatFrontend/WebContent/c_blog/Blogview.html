@@ -1,0 +1,25 @@
+<center><b>BLOG</b></center>
+<div ng-controller="BlogController">
+
+<table align="center" border="1" width="60%">
+<tr>
+<th>BlogName</th>
+<th>BlogContent</th>
+<th>Username</th>
+<th>Action</th>
+
+</tr>
+<tr ng-repeat="blog in blogdata">
+<td>{{blog.blogName}}</td>
+<td>{{blog.blogContent}}</td>
+<td>{{blog.loginname}}</td>
+<td>
+	<input type="submit" value="APPROVE BLOG" ng-click="approveBlog(blog.blogId)"/>
+	
+</td>
+
+</tr>
+</table>
+
+</div>
+

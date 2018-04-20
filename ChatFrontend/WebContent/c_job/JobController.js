@@ -11,7 +11,7 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 	function listjobs()
 	{
 		console.log("fetching all jobs");
-		$http.get("http://localhost:8091/ChatMiddleware/listjob")
+		$http.get("http://localhost:8090/ChatMiddleware/listjob")
 		.then(function(response)
 		{
 			$scope.jobdata=response.data;
@@ -34,7 +34,7 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 	$scope.addJob=function()
 	{
 		console.log("inside add job");
-		$http.post("http://localhost:8091/ChatMiddleware/addjob",$scope.job)
+		$http.post("http://localhost:8090/ChatMiddleware/addjob",$scope.job)
 		.then(function(response)
 		{
 			console.log('Status Text'+response.statusText);
@@ -44,7 +44,7 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 	$scope.deleteJob=function(jobId)
 	{
 		console.log("inside delete job");
-		$http.get('http://localhost:8091/ChatMiddleware/deletejob/'+jobId)
+		$http.get('http://localhost:8090/ChatMiddleware/deletejob/'+jobId)
 		.then(listjobs(),function(response)
 				{
 					console.log('Deleted');
@@ -55,7 +55,7 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 	$scope.applyJob=function(jobId)
 	{
 		console.log("inside apply job");
-		$http.post('http://localhost:8091/ChatMiddleware/applyJob/'+jobId)
+		$http.post('http://localhost:8090/ChatMiddleware/applyJob/'+jobId)
 		.then(function(response)
 				{
 					console.log('Applied');
@@ -66,7 +66,7 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 	function listmyjobs()
 	{
 		console.log("fetching my jobs");
-		$http.get("http://localhost:8091/ChatMiddleware/showmyjobs")
+		$http.get("http://localhost:8090/ChatMiddleware/showmyjobs")
 		.then(function(response)
 		{
 			$scope.myjobs=response.data;

@@ -14,6 +14,7 @@ public interface BlogDAO {
 	public boolean rejectBlog(Blog blog);
 	public Blog getBlog(int blogId);
 	public List<Blog> listBlog(String username);	
+	public List<Blog> getAllBlog();
 	public boolean incrementLike(Blog blog);	    
     public boolean addBlogComment(BlogComment blogComment);
     public boolean deleteBlogComment(BlogComment blogComment);

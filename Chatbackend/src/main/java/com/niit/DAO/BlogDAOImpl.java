@@ -176,5 +176,14 @@ public class BlogDAOImpl implements BlogDAO{
 		
 	}
 
+
+	@Override
+	public List<Blog> getAllBlog() {
+		Session session=sessionFactory.getCurrentSession();
+		List lab=null;
+		lab=session.createQuery("from Blog ").list();
+		return lab;
+	}
+
 	
 }

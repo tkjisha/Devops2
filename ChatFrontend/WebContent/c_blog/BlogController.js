@@ -6,11 +6,11 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.blog={blogId:0,blogName:'',blogContent:'',createDate:'',status:'',likes:0,loginname:''}
 	$rootScope.blog1={blogName:'',blogContent:'',createDate:'',status:'',likes:0,loginname:''}
 	$scope.blogdata;
-	$scope.bid;
+	
 	$scope.insertBlog=function()
 	{
 		console.log("inside blog controller insert");
-		$http.post("http://localhost:8091/ChatMiddleware/addblog",$scope.blog)
+		$http.post("http://localhost:8090/ChatMiddleware/addblog",$scope.blog)
 		.then(fetchAllBlogs(),function(response)
 		{
 			console.log('Status Text'+response.statusText);
@@ -21,7 +21,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	function fetchAllBlogs()
 	{
 		console.log("fetching all blogs");
-		$http.get("http://localhost:8091/ChatMiddleware/listblog",$scope.blog)
+		$http.get("http://localhost:8090/ChatMiddleware/getallblog",$scope.blog)
 		.then(function(response)
 		{
 			$scope.blogdata=response.data;
@@ -32,13 +32,12 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.editBlog=function(blogId)
 	{
 		console.log("inside blog edit"+blogId);
-		$http.get('http://localhost:8091/ChatMiddleware/getblog/'+blogId)
+		$http.get('http://localhost:8090/ChatMiddleware/getblog/'+blogId)
 		.then(function(response)
 				{console.log('Status Text');
 					$rootScope.blog1=response.data;
 					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);
-					$scope.bid=$rootScope.blog1.blogId;
-					console.log("id"+$scope.bid);
+				
 					$location.path('/UpdateBlog')
 				});
 	};
@@ -46,7 +45,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.deleteBlog=function(blogId)
 	{
 		console.log("inside blog delete");
-		$http.get('http://localhost:8091/ChatMiddleware/deleteblog/'+blogId)
+		$http.get('http://localhost:8090/ChatMiddleware/deleteblog/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					console.log('Deleted');
@@ -57,7 +56,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.incrementLike=function(blogId)
 	{
 		console.log("inside like increment");
-		$http.get('http://localhost:8091/ChatMiddleware/incrementlike/'+blogId)
+		$http.get('http://localhost:8090/ChatMiddleware/incrementlike/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					console.log('Incremented');
@@ -68,7 +67,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.updateBlog=function(blogId)
 	{
 		console.log("inside blog update");
-		$http.get('http://localhost:8091/ChatMiddleware/updateblog/'+blogId,$scope.blog1)
+		$http.get('http://localhost:8090/ChatMiddleware/updateblog/'+blogId)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;

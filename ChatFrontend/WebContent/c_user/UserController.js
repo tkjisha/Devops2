@@ -8,7 +8,7 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 	$rootScope.login=function()
 	{
 		console.log("inside login");
-		$http.post('http://localhost:8091/ChatMiddleware/login',$scope.user)
+		$http.post('http://localhost:8090/ChatMiddleware/login',$scope.user)
 		.then(function(response)
 			{
 				console.log(response.status);
@@ -19,14 +19,14 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 				if($rootScope.currentUser.role=="ROLEADMIN")
 					{
 						console.log("Admin home");
-						
+						$location.path('/admin');
 					}
 				else
 				{
 					console.log("User home"+$rootScope.currentUser.role);
-					
+					$location.path('/Userhome');
 				}
-				$location.path('/Userhome');
+				
 			});
 	};
 	
@@ -42,7 +42,7 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 	{
 		console.log("inside register");
 		
-		$http.post('http://localhost:8091/ChatMiddleware/registeruser',$scope.user)
+		$http.post('http://localhost:8090/ChatMiddleware/registeruser',$scope.user)
 		.then(function(response)
 		{
 			console.log(response.status);

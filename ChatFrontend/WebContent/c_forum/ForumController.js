@@ -9,7 +9,7 @@ myApp.controller("ForumController",function($scope,$http,$location)
 	$scope.insertForum=function()
 	{
 		console.log("inside forum controller insert");
-		$http.post('http://localhost:8091/ChatMiddleware/addforum',$scope.forum)
+		$http.post('http://localhost:8090/ChatMiddleware/addforum',$scope.forum)
 		.then(fetchAllForums(),function(response)
 		{
 			console.log('Status Text'+response.statusText);
@@ -19,7 +19,7 @@ myApp.controller("ForumController",function($scope,$http,$location)
 	function fetchAllForums()
 	{
 		console.log("fetching all forums");
-		$http.get('http://localhost:8091/ChatMiddleware/listforum',$scope.forum)
+		$http.get('http://localhost:8090/ChatMiddleware/listforum',$scope.forum)
 		.then(function(response)
 		{
 			$scope.forumdata=response.data;
@@ -30,7 +30,7 @@ myApp.controller("ForumController",function($scope,$http,$location)
 	$scope.deleteForum=function(forumId)
 	{
 		console.log("inside forum delete");
-		$http.get('http://localhost:8091/ChatMiddleware/deleteforum/'+forumId)
+		$http.get('http://localhost:8090/ChatMiddleware/deleteforum/'+forumId)
 		.then(fetchAllForum(),function(response)
 				{
 					console.log('Deleted');
