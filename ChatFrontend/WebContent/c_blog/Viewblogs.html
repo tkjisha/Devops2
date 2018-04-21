@@ -1,0 +1,25 @@
+
+<center><b>BLOG COMMENT</b></center>
+<div ng-controller="BlogController">
+
+
+<form id="viewblogform" method="post">
+Blogid {{bid}}
+<table>
+<tr ng-repeat="blog in blogdata" ng-show="{{blog.blogId==bid}}">
+<td><label>Blog Name </label>: {{blog.blogName}}</td>
+<td><label>Blog Content</label> : {{blog.blogContent}}</td>
+<td><textarea rows=3 col=20 name="commenttext" ng-model="blogcomment.commentText"></textarea></td>
+<td><input type="hidden" name="blogId" ng-model="blogcomment.blogId" ng-value="{{bid}}"></td>
+<td>
+	<input type="submit" value="COMMENT" ng-click="addBlogComment()"/>
+	
+</td>
+
+</tr>
+
+</table>
+
+</form>
+
+</div>

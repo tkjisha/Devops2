@@ -1,11 +1,14 @@
 <center><b>BLOG</b></center>
 <div ng-controller="BlogController">
 
+<form id="blogviewform" method="post">
+
 <table align="center" border="1" width="60%">
 <tr>
 <th>BlogName</th>
 <th>BlogContent</th>
 <th>Username</th>
+<th>Status</th>
 <th>Action</th>
 
 </tr>
@@ -13,13 +16,15 @@
 <td>{{blog.blogName}}</td>
 <td>{{blog.blogContent}}</td>
 <td>{{blog.loginname}}</td>
+<td>{{blog.status}}</td>
 <td>
-	<input type="submit" value="APPROVE BLOG" ng-click="approveBlog(blog.blogId)"/>
-	
+	<input type="submit"  value="APPROVE BLOG" ng-click="approveBlog(blog.blogId)" />	
+	<input type="submit"  value="REJECT BLOG" ng-click="rejectBlog(blog.blogId)" />	
 </td>
-
 </tr>
 </table>
+
+</form>
 
 </div>
 

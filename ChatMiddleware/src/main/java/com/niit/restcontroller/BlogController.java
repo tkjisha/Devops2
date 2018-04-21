@@ -78,7 +78,7 @@ public class BlogController {
 		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
 		String loginname=ud.getLoginname();
 		blog.setCreateDate(new java.util.Date());		
-		blog.setStatus("a");		
+		blog.setStatus("NA");		
 		blog.setLikes(0);
 		blog.setLoginname(loginname);
 		if(blogDAO.addBlog(blog))
@@ -171,10 +171,13 @@ public class BlogController {
 	}
 	
 	@PostMapping(value="/addblogcomment")	
-	public ResponseEntity<String> addblogcomment(@RequestBody BlogComment blogcomment)
+	public ResponseEntity<String> addblogcomment(@RequestBody BlogComment blogcomment,HttpSession session)
 	{
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
+		blogcomment.setLoginname(loginname);
+	//	blogcomment.setCommentText("blogcomment4");
 		blogcomment.setCommentDate(new java.util.Date());
-		blogcomment.setCommentText("blogcomment4");
 		
 		
 		if(blogDAO.addBlogComment(blogcomment))
@@ -202,10 +205,10 @@ public class BlogController {
 		}
 	}
 	
-	@GetMapping(value="/listblogcomment/{loginname}")
-	public ResponseEntity<List<BlogComment>> getListBlogComment(@PathVariable("loginname") String loginname )
+	@GetMapping(value="/listblogcomment")
+	public ResponseEntity<List<BlogComment>> getListBlogComment( )
 	{
-		List lbc=blogDAO.listBlogComments(loginname);
+		List lbc=blogDAO.listBlogComments();
 		if(lbc.equals(null))
 		{
 			return new ResponseEntity<List<BlogComment>>(lbc,HttpStatus.NOT_FOUND);

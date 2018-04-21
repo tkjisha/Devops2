@@ -23,6 +23,8 @@ myApp.config(function($routeProvider)
 			.when("/Userhome",{templateUrl:"c_user/Userhome.html"})
 			.when("/admin",{templateUrl:"c_user/Admin.html"})
 			.when("/viewallblogs",{templateUrl:"c_blog/Blogview.html"})
+			.when("/viewblogs",{templateUrl:"c_blog/Viewblogs.html"})
+			.when("/viewblogcomments",{templateUrl:"c_blog/Viewblogcomment.html"})
 		});
 myApp.run(function($rootScope,$cookieStore)
 		{

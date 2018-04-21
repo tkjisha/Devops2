@@ -1,0 +1,19 @@
+<center><b>VIEW BLOG COMMENTS</b></center>
+<div ng-controller="BlogController">
+<form id="commentform" method="post">
+<table border="1" align="center">
+<tr ng-repeat="bgcomment in blogcommentdata" >
+<td>{{bgcomment.commentText}}</td>
+<td>{{bgcomment.loginname}}</td>
+
+<td>
+	<input type="submit" value="DELETE" ng-click="deleteComment(bgcomment.commentId)"/>
+	
+</td>
+
+</tr>
+
+</table>
+
+</form>
+</div>

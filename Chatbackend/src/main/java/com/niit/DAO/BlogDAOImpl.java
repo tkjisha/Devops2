@@ -166,11 +166,11 @@ public class BlogDAOImpl implements BlogDAO{
 
 
 	@Override
-	public List<BlogComment> listBlogComments(String username) {
+	public List<BlogComment> listBlogComments() {
 		
 			Session session=sessionFactory.getCurrentSession();
 			List lb=null;
-			lb=session.createQuery("from BlogComment where loginname='"+username+"'").list();
+			lb=session.createQuery("from BlogComment").list();
 			return lb;
 			
 		
