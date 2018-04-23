@@ -8,6 +8,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$scope.blogdata;
 	$scope.blogcommentdata;
 	$rootScope.bid;
+	$rootScope.bgid;
 	$scope.blogcomment={commentText:'',blogId:0,loginname:'',commentDate:''}
 	
 	
@@ -52,6 +53,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 		.then(function(response)
 				{console.log('Status Text');
 					$rootScope.blog1=response.data;
+					$rootScope.bgid=$rootScope.blog1.blogId;
 					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);
 				
 					$location.path('/UpdateBlog')
@@ -60,7 +62,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	
 	$scope.getBlog=function(blogId)
 	{
-		console.log("inside blog edit"+blogId);
+		console.log("inside blog get"+blogId);
 		$http.get('http://localhost:8090/ChatMiddleware/getblog/'+blogId)
 		.then(function(response)
 				{ 

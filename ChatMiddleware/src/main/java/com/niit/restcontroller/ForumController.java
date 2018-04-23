@@ -2,6 +2,8 @@ package com.niit.restcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.niit.DAO.ForumDAO;
 import com.niit.Model.Forum;
 import com.niit.Model.ForumComment;
+import com.niit.Model.UserDetail;
 
 @RestController
 public class ForumController {
@@ -41,10 +44,10 @@ public class ForumController {
 		}
 	}
 	
-	@GetMapping(value="/getforum")
-	public ResponseEntity<Forum> getForum()
+	@GetMapping(value="/getforum/{forumId}")
+	public ResponseEntity<Forum> getForum(@PathVariable("forumId") int forumId)
 	{
-		Forum f=forumDAO.getForum(1550);
+		Forum f=forumDAO.getForum(forumId);
 		if(f.equals(null))
 		{
 			return new ResponseEntity<Forum>(f,HttpStatus.NOT_FOUND);
@@ -56,13 +59,14 @@ public class ForumController {
 	}
 	
 	@PostMapping(value="/addforum")	
-	public ResponseEntity<String> addforum(@RequestBody Forum forum)
+	public ResponseEntity<String> addforum(@RequestBody Forum forum,HttpSession session)
 	{
-	//	forum.setForumName("forum3");
-	//	forum.setForumContent("forumcontent1");
+	
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
 		forum.setCreateDate(new java.util.Date());
-		forum.setLoginname("jis");
-		forum.setStatus("A");
+		forum.setLoginname(loginname);
+		forum.setStatus("NA");
 		if(forumDAO.addForum(forum))
 		{
 			return new ResponseEntity<String>("Forum Added",HttpStatus.OK);
@@ -138,10 +142,13 @@ public class ForumController {
 	}
 	
 	@PostMapping(value="/addforumcomment")	
-	public ResponseEntity<String> addforumcomment(@RequestBody ForumComment forumcomment)
+	public ResponseEntity<String> addforumcomment(@RequestBody ForumComment forumcomment,HttpSession session)
 	{
 		System.out.println("addforumcomment");
-		forumcomment.setFcommentText("forumcomment5");
+		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+		String loginname=ud.getLoginname();
+		forumcomment.setLoginname(loginname);
+		
 		forumcomment.setFmCommentDate(new java.util.Date());
 		
 		
@@ -170,6 +177,20 @@ public class ForumController {
 		}
 	}
    
+	@GetMapping(value="/listforumcomment")
+	public ResponseEntity<List<ForumComment>> getListForumComment( )
+	{
+		List lfc=forumDAO.listForumComments();
+		if(lfc.equals(null))
+		{
+			return new ResponseEntity<List<ForumComment>>(lfc,HttpStatus.NOT_FOUND);
+		}
+		else
+		{
+			return new ResponseEntity<List<ForumComment>>(lfc,HttpStatus.OK);
+		}
+	}
+	
 	@GetMapping(value="/deleteforumcomment/{fcommentId}")	
 	public ResponseEntity<String> deleteforumcomment(@PathVariable("fcommentId") int fcommentId)
 	{

@@ -25,6 +25,9 @@ myApp.config(function($routeProvider)
 			.when("/viewallblogs",{templateUrl:"c_blog/Blogview.html"})
 			.when("/viewblogs",{templateUrl:"c_blog/Viewblogs.html"})
 			.when("/viewblogcomments",{templateUrl:"c_blog/Viewblogcomment.html"})
+			.when("/viewallforums",{templateUrl:"c_forum/Forumview.html"})
+			.when("/viewforums",{templateUrl:"c_forum/Viewforums.html"})
+			.when("/viewforumcomments",{templateUrl:"c_forum/Viewforumcomment.html"})
 		});
 myApp.run(function($rootScope,$cookieStore)
 		{

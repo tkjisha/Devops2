@@ -3,15 +3,15 @@
 
 <div ng-controller="BlogController">
 
-{{bid}}{{blog1.blogId}}
+{{bgid}}{{blog1.blogId}}
 
 <form id="updateblogform" method="post">
-{{bid}}
+blog{{bgid}}
 <table align="center" >
 	
-	<tr><td>Blog Name</td><br><td><input type="text" name="blogName"  ng-model="blog.blogName"></td></tr></br></br>
-	<tr><td>Blog Content</td><td><textarea rows="6" cols="24" name="blogContent">{{blog.blogContent}}</textarea></td></tr>
-	<tr><td colspan="2"><input type="submit" value="UPDATE BLOG" ng-click="updateBlog(blog1.blogId)" /></td></tr>
+	<tr><td>Blog Name</td><br><td><input type="text" name="blogName" ng-model="blog1.blogName" ng-value="{{blog1.blogName}}"/></td></tr></br></br>
+	<tr><td>Blog Content</td><td><textarea rows="6" cols="24" name="blogContent" ng-model="blog.blogContent">{{blog1.blogContent}}</textarea></td></tr>
+	<tr><td colspan="2"><input type="submit" value="UPDATE BLOG" ng-click="updateBlog(bgid)" /></td></tr>
 </table>
 </form>
 <br>

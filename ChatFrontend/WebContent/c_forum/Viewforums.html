@@ -1,0 +1,24 @@
+<center><b>FORUM COMMENT</b></center>
+<div ng-controller="ForumController">
+
+
+<form id="viewforumform" method="post">
+forumid {{fid}}
+<table>
+<tr ng-repeat="forum in forumdata" ng-show="{{forum.forumId==fid}}">
+<td><label>Forum Name </label>:{{forum.forumName}}</td>
+<td><label>Forum Content</label> : {{forum.forumContent}}</td>
+<td><textarea rows=3 col=20 name="commenttext" ng-model="forumcomment.fcommentText"></textarea></td>
+<td><input type="hidden" name="forumId" ng-model="forumcomment.forumId" ng-value="{{fid}}" /></td>
+<td>
+	<input type="submit" value="COMMENT" ng-click="addForumComment()"/>
+	
+</td>
+
+</tr>
+
+</table>
+
+</form>
+
+</div>

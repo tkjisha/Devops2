@@ -1,0 +1,29 @@
+<center><b>FORUMS</b></center>
+<div ng-controller="ForumController">
+
+<form id="forumviewform" method="post">
+
+<table align="center" border="1" width="60%">
+<tr>
+<th>ForumName</th>
+<th>ForumContent</th>
+<th>Loginname</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+<tr ng-repeat="forum in forumdata">
+<td>{{forum.forumName}}</td>
+<td>{{forum.forumContent}}</td>
+<td>{{forum.loginname}}</td>
+<td>{{forum.status}}</td>
+<td>
+	<input type="submit"  value="APPROVE FORUM" ng-click="approveForum(forum.forumId)" />	
+	<input type="submit"  value="REJECT FORUM" ng-click="rejectForum(forum.forumId)" />	
+</td>
+</tr>
+</table>
+
+</form>
+
+</div>

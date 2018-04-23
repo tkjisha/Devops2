@@ -154,5 +154,14 @@ public class ForumDAOImpl implements ForumDAO{
 		return fc;
 	}
 
+
+	@Override
+	public List<ForumComment> listForumComments() {
+		 Session session=sessionFactory.getCurrentSession();
+			List lf=null;
+			lf=session.createQuery("from ForumComment").list();
+			return lf;
+	}
+
 	
 }

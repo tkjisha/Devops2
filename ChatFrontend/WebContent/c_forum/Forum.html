@@ -18,6 +18,7 @@
 <th>Forum Name</th>
 <th>Forum Content</th>
 <th>Action</th>
+<th>Comments</th>
 </tr>
 <tr ng-repeat="forum in forumdata">
 <td>{{forum.forumName}}</td>
@@ -25,6 +26,9 @@
 <td>
 	<input type="submit" value="EDIT FORUM" ng-click="editForum(forum.forumId)"/>
 	<input type="submit" value="DELETE FORUM" ng-click="deleteForum(forum.forumId)"/>
+</td>
+<td>
+	<input type="submit" value="COMMENT" ng-click="getForum(forum.forumId)"/>
 </td>
 </tr>
 </table>

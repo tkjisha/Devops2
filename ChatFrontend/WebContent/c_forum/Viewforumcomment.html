@@ -1,0 +1,19 @@
+<center><b>VIEW FORUM COMMENTS</b></center>
+<div ng-controller="ForumController">
+<form id="fcommentform" method="post">
+<table border="1" align="center">
+<tr ng-repeat="fcomment in forumcommentdata" >
+<td>{{fcomment.fcommentText}}</td>
+<td>{{fcomment.loginname}}</td>
+
+<td>
+	<input type="submit" value="DELETE" ng-click="deleteForumComment(fcomment.fcommentId)"/>
+	
+</td>
+
+</tr>
+
+</table>
+
+</form>
+</div>
