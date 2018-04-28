@@ -8,30 +8,35 @@
 	
 	<tr><td>Blog Name</td><br><td><input type="text" name="blogName" ng-model="blog.blogName"></td></tr></br></br>
 	<tr><td>Blog Content</td><td><textarea rows="6" cols="24" name="blogContent" ng-model="blog.blogContent"></textarea></td></tr>
-	<tr><td colspan="2"><input type="submit" value="INSERT BLOG" ng-click="insertBlog()"></td></tr>
+	<tr><td colspan="2"><input type="submit" value="INSERT BLOG" ng-click="insertBlog()"></td>
+	<td colspan="2"><input type="submit" value="UPDATE BLOG"  ng-click="updateBlog(blog.blogId)"></td></tr>
 </table>
 <!--  </form> -->
 <br>
 <!--  <form id="blogform" method="post">-->
-<table align="center" border="1" width="60%">
+<table align="center" frame="box" border="1" width="60%" >
 <tr>
 <th>BlogName</th>
 <th>BlogContent</th>
+<th>UserName</th>
 <th>Likes</th>
-<th>Action</th>
 <th>Comments</th>
+<th>Action</th>
+
 </tr>
 <tr ng-repeat="blog in blogdata">
 <td>{{blog.blogName}}</td>
 <td>{{blog.blogContent}}</td>
+<td>{{blog.loginname}}</td>
 <td>{{blog.likes}}<input type="submit" value="LIKES" ng-click="incrementLike(blog.blogId)" /></td>
 <td>
-	<input type="submit" value="EDIT BLOG" ng-click="editBlog(blog.blogId)"/>
-	<input type="submit" value="DELETE BLOG" ng-click="deleteBlog(blog.blogId)"/>
+	<input type="submit" value="COMMENT"  ng-click="getBlog(blog.blogId)"/>
 </td>
-<td>
-	<input type="submit" value="COMMENT" ng-click="getBlog(blog.blogId)"/>
-	</td>
+<td >
+	<input type="submit" value="EDIT BLOG" ng-show="{{currentUser.loginname==blog.loginname}}" ng-click="editBlog(blog.blogId)" />
+	<input type="submit" value="DELETE BLOG" ng-show="{{currentUser.loginname==blog.loginname}}" ng-click="deleteBlog(blog.blogId)" />
+</td>
+
 </tr>
 </table>
 

@@ -3,7 +3,7 @@
  */
 myApp.service('ChatService',function($q,$timeout)
 {
-	var base_url="http://localhost:8091/ChatMiddleware";
+	var base_url="http://localhost:8090/ChatMiddleware";
 	var service={},listener=$q.defer(),socket={client:null,stomp:null},messageIds=[];
 	
 	service.RECONNECT_TIMEOUT=30000;

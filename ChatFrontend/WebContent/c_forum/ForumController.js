@@ -4,9 +4,11 @@
 myApp.controller("ForumController",function($scope,$rootScope,$http,$location)
 {
 	$scope.forum={forumId:0,forumName:'',forumContent:'',createDate:'',status:'',loginname:''}
+	$rootScope.forum1={forumId:0,forumName:'',forumContent:'',createDate:'',status:'',loginname:''}
 	$scope.forumdata;
 	$scope.forumcomment={fcommentText:'',loginname:'',forumId:0,fmCommentDate:''}
 	$rootScope.fid;
+	$rootScope.frid;
 	$scope.forumcommentdata;
 	
 	$scope.insertForum=function()
@@ -41,6 +43,19 @@ myApp.controller("ForumController",function($scope,$rootScope,$http,$location)
 		});
 	};
 	
+	$scope.editForum=function(forumId)
+	{
+		console.log("inside forum edit"+forumId);
+		$http.get('http://localhost:8090/ChatMiddleware/getforum/'+forumId)
+		.then(function(response)
+			{ 
+				console.log('Status Text');
+				$rootScope.forum1=response.data;
+				$rootScope.frid=$rootScope.forum1.forumId;
+				console.log($rootScope.forum1.forumId);
+				$location.path('/updateforum');
+			});
+	};
 	
 	$scope.getForum=function(forumId)
 	{

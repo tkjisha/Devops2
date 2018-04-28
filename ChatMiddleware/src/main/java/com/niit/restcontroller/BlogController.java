@@ -107,11 +107,12 @@ public class BlogController {
 		
 	}
 	
-	@GetMapping(value="/updateblog/{blogId}")	
-	public ResponseEntity<String> updateblog(@PathVariable("blogId") int blogId)
+	@PostMapping(value="/updateblog/{blogId}")	
+	public ResponseEntity<String> updateblog(@PathVariable("blogId") int blogId,@RequestBody Blog blog1)
 	{
 		Blog blog=(Blog)blogDAO.getBlog(blogId);
-		blog.setStatus("NA");
+		blog.setBlogName(blog1.getBlogName());;
+		blog.setBlogContent(blog1.getBlogContent());
 		if(blogDAO.updateBlog(blog))
 		{
 			return new ResponseEntity<String>("Blog updatd",HttpStatus.OK);
@@ -176,7 +177,6 @@ public class BlogController {
 		UserDetail ud= (UserDetail) session.getAttribute("userDetail");
 		String loginname=ud.getLoginname();
 		blogcomment.setLoginname(loginname);
-	//	blogcomment.setCommentText("blogcomment4");
 		blogcomment.setCommentDate(new java.util.Date());
 		
 		

@@ -11,7 +11,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	$rootScope.bgid;
 	$scope.blogcomment={commentText:'',blogId:0,loginname:'',commentDate:''}
 	
-	
+	$scope.val='false';
 	$scope.insertBlog=function()
 	{
 		console.log("inside blog controller insert");
@@ -52,11 +52,12 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 		$http.get('http://localhost:8090/ChatMiddleware/getblog/'+blogId)
 		.then(function(response)
 				{console.log('Status Text');
-					$rootScope.blog1=response.data;
-					$rootScope.bgid=$rootScope.blog1.blogId;
-					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);
+					$scope.blog=response.data;
+					$scope.val='true';
+				/*	$rootScope.bgid=$rootScope.blog1.blogId;
+					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);*/
 				
-					$location.path('/UpdateBlog')
+					$location.path('/blog')
 				});
 	};
 	
@@ -97,8 +98,8 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	
 	$scope.updateBlog=function(blogId)
 	{
-		console.log("inside blog update");
-		$http.get('http://localhost:8090/ChatMiddleware/updateblog/'+$rootScope.blog1.blogId,$rootScope.blog1)
+		console.log("inside blog update"+blogId);
+		$http.post('http://localhost:8090/ChatMiddleware/updateblog/'+blogId,$scope.blog)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;

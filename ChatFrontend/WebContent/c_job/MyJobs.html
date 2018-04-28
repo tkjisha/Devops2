@@ -1,13 +1,14 @@
  <div ng-controller="JobController">
 <div align="center">
+<b><h2>Jobs Applied</h2></b>
 <table border="1">
-<b>Jobs Applied</b>
+
 <tr><th>Company Name</th><th>Designation</th><th>Location</th><th>Post Date</th></tr>
 <tr ng-repeat="jobs in myjobs">
 	<td>{{jobs.company}}</td>
 	<td>{{jobs.desig}}</td>
 	<td>{{jobs.location}}</td>
-	<td>{{jobs.postdate}}</td>
+	<td>{{jobs.postdate | date : 'dd/MM/yyyy'}}</td>
 </table>
 
 </div>

@@ -1,6 +1,8 @@
 <div ng-controller="JobController">
 
-<form id="jobform" method="post"></form>
+<form id="jobform" method="post">
+<div align="center">
+<b><h2>Jobs</h2></b>
 <table align="center" border="1" width="60%">
 <tr>
 <th>DESIGNATION</th>
@@ -17,7 +19,7 @@
 <td>{{jobs.description}}</td>
 <td>{{jobs.sal}}</td>
 <td>{{jobs.location}}</td>
-<td>{{jobs.postdate}}</td>
+<td>{{jobs.postdate | date : 'dd/MM/yyyy' }}</td>
 <td>
 	<input ng-show="currentUser.role=='ROLEUSER'" type="submit" value="APPLY" ng-click="applyJob(jobs.jobId)"/>
 	<input ng-show="currentUser.role=='ROLEADMIN'" type="submit" value="DELETE " ng-click="deleteJob(jobs.jobId)"/>
@@ -25,6 +27,8 @@
 
 </tr>
 </table>
+
+</div>
 </form>
 <br/><br/><br/><br/>
 <div align="center" ng-show="currentUser.role=='ROLEADMIN'">

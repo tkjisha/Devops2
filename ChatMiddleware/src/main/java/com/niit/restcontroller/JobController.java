@@ -137,9 +137,9 @@ public class JobController {
 	 @GetMapping(value="/showmyjobs")
 		public ResponseEntity<List<ApplyJob>> showMyJobs(HttpSession session)
 		{
-		/*	UserDetail ud= (UserDetail) session.getAttribute("userDetail");
-			String loginname=ud.getLoginname();*/
-			List<ApplyJob> l=jobDAO.showMyJobs("ji");
+			UserDetail ud= (UserDetail) session.getAttribute("userDetail");
+			String loginname=ud.getLoginname();
+			List<ApplyJob> l=jobDAO.showMyJobs(loginname);
 			if(l.size()>0)
 			{
 				return new ResponseEntity<List<ApplyJob>>(l,HttpStatus.OK);

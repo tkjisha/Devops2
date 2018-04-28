@@ -15,9 +15,9 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 		.then(function(response)
 		{
 			$scope.jobdata=response.data;
+					
 		});
 	};
-	
 	
 	
 	$scope.add=function()
@@ -69,8 +69,7 @@ myApp.controller("JobController",function($scope,$rootScope,$http,$location)
 		$http.get("http://localhost:8090/ChatMiddleware/showmyjobs")
 		.then(function(response)
 		{
-			$scope.myjobs=response.data;
-			console.log(response.data);
+			$scope.myjobs=response.data;			
 		});
 	};
 	
