@@ -10,6 +10,7 @@ myApp.controller("ForumController",function($scope,$rootScope,$http,$location)
 	$rootScope.fid;
 	$rootScope.frid;
 	$scope.forumcommentdata;
+	$scope.res='false';
 	
 	$scope.insertForum=function()
 	{
@@ -50,10 +51,10 @@ myApp.controller("ForumController",function($scope,$rootScope,$http,$location)
 		.then(function(response)
 			{ 
 				console.log('Status Text');
-				$rootScope.forum1=response.data;
-				$rootScope.frid=$rootScope.forum1.forumId;
-				console.log($rootScope.forum1.forumId);
-				$location.path('/updateforum');
+				$scope.forum=response.data;
+				$scope.res='true';		
+				console.log($scope.res);
+				$location.path('/forum');
 			});
 	};
 	
@@ -79,6 +80,18 @@ myApp.controller("ForumController",function($scope,$rootScope,$http,$location)
 				{
 					console.log('Deleted');
 					$location.path('/Forum')
+				});
+	};
+	
+	$scope.updateForum=function(forumId)
+	{
+		console.log("inside forum update"+forumId);
+		$http.post('http://localhost:8090/ChatMiddleware/updateforum/'+forumId,$scope.forum)
+		.then(fetchAllForums(),function(response)
+				{
+					$scope.forum=response.data;
+					console.log('Status Text'+response.statusText);
+					$location.path('/forum');
 				});
 	};
 	

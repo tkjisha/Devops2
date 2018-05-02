@@ -2,6 +2,9 @@ package com.niit.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -39,7 +42,7 @@ public class UserDetailDAOTest {
 		assertTrue("Create problem",userdetailDAO.registerUser(ud));
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testcheckLogin()
 	{
@@ -65,6 +68,19 @@ public class UserDetailDAOTest {
 		UserDetail ud=userdetailDAO.getUser("abc");
 		System.out.println(ud.getIsonline());
 		assertTrue("Problem",userdetailDAO.updateOnlineStatus("Y", ud));
+	}
+	
+	@Test
+	public void testshowusers()
+	{
+		List<UserDetail> l=userdetailDAO.showusers();
+		Iterator li=l.iterator();
+		while(li.hasNext())
+		{
+			UserDetail ud=(UserDetail)li.next();
+			System.out.print(ud.getEmailid()+ud.getPassword());
+			
+		}
 	}
 	
 	@Ignore

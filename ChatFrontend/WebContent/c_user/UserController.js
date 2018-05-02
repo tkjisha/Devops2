@@ -4,6 +4,7 @@
 myApp.controller("UserController",function($scope,$http,$location,$rootScope,$cookieStore)
 {
 	$scope.user={loginname:'',password:'',role:'ROLEUSER',username:'',emailid:'',mobileno:'',address:'',isonline:'n'}
+	$scope.userdata;
 	
 	$rootScope.login=function()
 	{
@@ -46,7 +47,21 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 		.then(function(response)
 		{
 			console.log(response.status);
+			$location.path('/register');
 		});
 	};
+	
+	function getUsers()
+	{
+		console.log("inside getuser");
+		$http.get("http://localhost:8090/ChatMiddleware/listuser")
+		.then(function(response)
+				{
+					$scope.userdata=response.data;
+					console.log($scope.userdata);
+				});
+	};
+	
+	getUsers();
 	
 });

@@ -1,20 +1,43 @@
 <center><b>CHAT</b></center>
-<div ng-controller="ChatController">
+<!--  <div ng-controller="ChatController">
 
-<form  name="chatmsg">
+<form  ng-click="addMessage()" name="chatmsg">
 <div class="row" align="center">
 <Label>Message </Label><br>
 <input type="text" placeholder="Enter ur message" ng-model="message">
 
-<button class="btn btn-primary" type="submit" ng-click="addMessage()">Send</button>
+<button class="btn btn-primary" type="submit" >Send</button>
 </div>
 </form>
 
 Message
 <div align="center">
-	<p ng-repeat="message in messages"></p>
-	<time>{{message.time}}</time>
+	<p ng-repeat="message in messages"></p>	
 	<span>{{message.message}}</span>
 </div>
 
+</div> -->
+
+<div class="container" ng-controller="ChatController">
+	<form ng-submit="addMessage()" name="chatMsg">
+	<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-9 form-group">
+								<label>Message</label>
+								<input type="text" placeholder="Enter Chat Text" ng-model="message" class="form-control">
+							</div>
+							<div class="col-sm-3 form-group">
+								<span class="count" ng-bind="max - message.length">140</span>
+								<button ng-disabled="message.length>140||message.length==0">Send</button>
+							</div>
+						</div>
+	</div>
+	</form>
+	
+	<div class="col-sm-12">
+		<p ng-repeat="message in messages">
+			{{message.message}}
+		</p>
+	</div>
+	
 </div>

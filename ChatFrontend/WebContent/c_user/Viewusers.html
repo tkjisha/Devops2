@@ -1,0 +1,16 @@
+<center><b>VIEW USERS</b></center><br/><br/><br/>
+<div ng-controller="UserController">
+
+
+<table border="1" align="center">
+<tr>
+<th>USERNAME</th>
+<th>EMAIL</th>
+<th>MOBILE</th>
+</tr>
+<tr ng-repeat="user in userdata">
+<td>{{user.loginname}}</td>
+<td>{{user.emailid}}</td>
+<td>{{user.mobileno}}</td>
+</tr>
+</div>

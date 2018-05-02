@@ -52,7 +52,9 @@
 <div class="collapse navbar-collapse" id="bs-demo-navbar-collapse-1">
 <ul class="nav navbar-nav" >
 <li><a href="#/"><img src="image/CHAT2.jpg" height="60" width="100"/><B>CHATCOLLABORATE</B></a></li>
-<li><a href="#/home">Home<i class="fa fa-home"></i></a></li>
+<li ng-show="currentUser.role!='ROLEUSER' && currentUser.role!='ROLEADMIN'"><a href="#/home">Home<i class="fa fa-home"></i></a></li>
+<li ng-show="currentUser.role=='ROLEUSER' "><a href="#/Userhome">Userhome</a></li>
+<li ng-show="currentUser.role=='ROLEADMIN' "><a href="#/admin">AdminHome</a></li>
 <li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/register">Register<i class="fa fa-registered" ></i></a></li>
 <li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/login">Login<i class="fa fa-sign-in"></i></a></li>
 <li ng-hide="currentUser.role=='ROLEUSER' || currentUser.role=='ROLEADMIN'"><a href="#/about">AboutUs<i class="fa fa-user"></i></a></li>
@@ -85,7 +87,7 @@
 <div class="maincontent">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tr bgcolor="grey"><td colspan="2" >LetsChat</td></tr>
-<tr bgcolor="lightblue" ><td height="400"><div ng-view> </div></td></tr>
+<tr bgcolor="lightblue" ><td height="500"><div ng-view> </div></td></tr>
 </table>
 </div>
 

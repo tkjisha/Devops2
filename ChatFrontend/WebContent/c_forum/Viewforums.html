@@ -1,9 +1,9 @@
-<center><b>FORUM COMMENT</b></center>
+<center><b>FORUM COMMENT</b></center><br/><br/><br/>
 <div ng-controller="ForumController">
 
 
 <form id="viewforumform" method="post">
-forumid {{fid}}
+
 <table>
 <tr ng-repeat="forum in forumdata" ng-show="{{forum.forumId==fid}}">
 <td><label>Forum Name </label>:{{forum.forumName}}</td>

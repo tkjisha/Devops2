@@ -1,5 +1,7 @@
 package com.niit.restcontroller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +27,20 @@ public class UserDetailController {
 	public ResponseEntity<String> userdettest()
 	{
 		return new ResponseEntity<String>("Demo user det",HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/listuser")
+	public ResponseEntity<List<UserDetail>> getUserList()
+	{
+		List<UserDetail> luser=userdetailDAO.showusers();
+		if(luser.size()>0)
+		{
+			return new ResponseEntity<List<UserDetail>>(luser,HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<List<UserDetail>>(luser,HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@GetMapping(value="/getuserdet")

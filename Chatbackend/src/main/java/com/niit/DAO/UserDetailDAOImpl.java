@@ -1,6 +1,8 @@
 package com.niit.DAO;
 
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -72,6 +74,15 @@ public class UserDetailDAOImpl implements UserDetailDAO{
 		ud=(UserDetail) session.get(UserDetail.class, loginname);
 		System.out.println(ud.getAddress()+ud.getPassword());
 		return ud;
+	}
+
+	@Override
+	public List<UserDetail> showusers() {
+		Session session=sessionFactory.openSession();
+		List<UserDetail> luser=null;
+		luser=session.createQuery("from UserDetail where loginname !='admin'").list();session.close();
+		return luser;
+		
 	}
 
 }

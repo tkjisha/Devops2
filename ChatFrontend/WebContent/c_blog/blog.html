@@ -1,5 +1,5 @@
 
-<center><b>BLOG</b></center>
+<center><b>BLOG</b></center><br/><br/><br/>
 <div ng-controller="BlogController">
 
 
@@ -8,8 +8,8 @@
 	
 	<tr><td>Blog Name</td><br><td><input type="text" name="blogName" ng-model="blog.blogName"></td></tr></br></br>
 	<tr><td>Blog Content</td><td><textarea rows="6" cols="24" name="blogContent" ng-model="blog.blogContent"></textarea></td></tr>
-	<tr><td colspan="2"><input type="submit" value="INSERT BLOG" ng-click="insertBlog()"></td>
-	<td colspan="2"><input type="submit" value="UPDATE BLOG"  ng-click="updateBlog(blog.blogId)"></td></tr>
+	<tr><td colspan="2"><input type="submit" value="INSERT BLOG" ng-hide="val=='true'" ng-click="insertBlog()"></td>
+	<td colspan="2"><input type="submit" value="UPDATE BLOG" ng-show="val=='true'" ng-click="updateBlog(blog.blogId)"></td></tr>
 </table>
 <!--  </form> -->
 <br>
@@ -21,7 +21,7 @@
 <th>UserName</th>
 <th>Likes</th>
 <th>Comments</th>
-<th>Action</th>
+<th ng-hide="{{currentUser.loginname=='admin'}}">Action</th>
 
 </tr>
 <tr ng-repeat="blog in blogdata">

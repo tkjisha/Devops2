@@ -54,9 +54,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 				{console.log('Status Text');
 					$scope.blog=response.data;
 					$scope.val='true';
-				/*	$rootScope.bgid=$rootScope.blog1.blogId;
-					console.log('Status Text'+response.statusText);console.log($rootScope.blog1.blogId);*/
-				
+					console.log($scope.val);
 					$location.path('/blog')
 				});
 	};
@@ -103,7 +101,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 		.then(fetchAllBlogs(),function(response)
 				{
 					$scope.blog=response.data;
-					console.log('Status Text'+response.statusText);
+					console.log('Updated');
 					$location.path('/blog');
 				});
 	};
@@ -115,7 +113,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 		.then(function(response)
 				{
 					$scope.blog=response.data;
-					console.log('Status Text'+response.statusText);
+					console.log('blog approved');
 					$location.path('/Blogview');
 				});
 	};
@@ -127,7 +125,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 		.then(function(response)
 				{
 					$scope.blog=response.data;
-					console.log('Status Text'+response.statusText);
+					console.log('blog rejected');
 					$location.path('/Blogview');
 				});
 	};
@@ -136,9 +134,9 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 	{
 		console.log("inside comment blog");
 		$http.post("http://localhost:8090/ChatMiddleware/addblogcomment",$scope.blogcomment)
-		.then(getAllBlogcomments(),function(response)
+		.then(getAllBlogComments(),function(response)
 		{
-			console.log('Status Text'+response.statusText);
+			console.log('Comment added');
 		});
 		
 	};
@@ -149,7 +147,7 @@ myApp.controller("BlogController",function($scope,$rootScope,$http,$location)
 		$http.get("http://localhost:8090/ChatMiddleware/deleteblogcomment/"+commentId)
 		.then(getAllBlogComments(),function(response)
 		{
-			console.log('Status Text'+response.statusText);
+			console.log('comment deleted');
 		});
 		
 	};

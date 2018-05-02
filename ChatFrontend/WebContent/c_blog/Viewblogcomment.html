@@ -1,7 +1,12 @@
-<center><b>VIEW BLOG COMMENTS</b></center>
+<center><b>VIEW BLOG COMMENTS</b></center><br/><br/><br/>
 <div ng-controller="BlogController">
 <form id="commentform" method="post">
 <table border="1" align="center">
+<tr>
+<th>COMMENT</th>
+<th>USERNAME</th>
+<th>ACTION</th>
+</tr>
 <tr ng-repeat="bgcomment in blogcommentdata" >
 <td>{{bgcomment.commentText}}</td>
 <td>{{bgcomment.loginname}}</td>
