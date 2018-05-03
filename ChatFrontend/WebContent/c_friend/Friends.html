@@ -5,7 +5,7 @@
 <b>Friends</b>
 <tr><td>Friend Name</td><td>Operation</td></tr>
 <tr ng-repeat="friend in acceptfrienddata">
-	<td>{{friend.friendloginname}}{{friend.friendId}}</td>
+	<td>{{friend.friendloginname}}</td>
 	<td><input type="submit"  value="Delete" ng-click="deleteFriendRequest(friend.friendId)" /></td>
 </table>
 <br/><br/><br/>
@@ -13,7 +13,7 @@
 <table border="1">
 <tr><td>Friend Name</td><td>Operation</td></tr>
 <tr ng-repeat="friend in pendingfrienddata">
-	<td>{{friend.friendloginname}}{{friend.friendId}}</td>
+	<td>{{friend.friendloginname}}</td>
 	<td><input type="submit"  value="Accept" ng-click="acceptFriendRequest(friend.friendId)" /></td>
 </table>
 
@@ -22,7 +22,7 @@
  <table border="1">
 <tr><td>Friend Name</td><td>Operation</td></tr>
 <tr ng-repeat="friend in suggestedfrienddata">
-	<td>{{friend.loginname}}{{friend.friendId}}{{friend.friendloginname}}</td>
+	<td>{{friend.loginname}}{{friend.friendloginname}}</td>
 	<td><input type="submit"  value="Send Request" ng-click="sendFriendRequest(friend.friendloginname)" /></td>
 </table>
 

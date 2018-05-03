@@ -51,6 +51,18 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 		});
 	};
 	
+	$rootScope.updateuser=function()
+	{
+		console.log("inside updt user");
+		
+		$http.post('http://localhost:8090/ChatMiddleware/updatestatus',$scope.user)
+		.then(function(response)
+		{
+			console.log(response.status);
+			$location.path('/Userhome');
+		});
+	};
+	
 	function getUsers()
 	{
 		console.log("inside getuser");

@@ -35,7 +35,7 @@ myApp.controller('FriendController',function($scope,$rootScope,$http,$location)
 	function getSuggestedFriends()
 	{
 		console.log("inside suggestedfriend");
-		$http.get("http://localhost:8090/ChatMiddleware/showSuggestedFriend")
+		$http.get("http://localhost:8090/ChatMiddleware/showSuggestedFriend",$scope.friend)
 		.then(function(response)
 		{
 			$scope.suggestedfrienddata=response.data;

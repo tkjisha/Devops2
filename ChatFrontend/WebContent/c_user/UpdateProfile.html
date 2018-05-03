@@ -1,0 +1,42 @@
+<center><b>UPDATE PROFILE</b></center><br/><br/><br/>
+
+<div ng-controller="UserController">
+<form id="updateprofile" method="post">
+
+<div class="row" >
+    <div class="col-md-6 col-md-offset-4">
+        <div class="form-group">
+        	<label>Login Name</label>
+            <input class="form-control"  name="loginname"  value="{{currentUser.loginname}}"   ng-disabled="true">
+        </div>
+        <div class="form-group">
+        	<label>Password</label>
+            <input class="form-control"  name="password" placeholder="Enter Password" ng-model="user.password" type="password" required>
+        </div>
+       
+        <div class="form-group">
+        	<label>Email Id</label>
+            <input class="form-control" name="emailid"  placeholder="Enter Mail" ng-model="user.emailid" type="email" required>
+        </div>
+        <div class="form-group">
+        	<label>Mobile Number</label>
+            <input class="form-control" name="mobileno" placeholder="Enter Mobile" ng-model="user.mobileno" type="text" >
+        </div>
+        <div class="form-group">
+        	<label>Address</label>
+            <input class="form-control" name="address" placeholder="Enter Address" ng-model="user.address" type="text" >
+        </div>
+     
+    </div>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-primary" type="submit" ng-click="updateuser()">UpdateProfile</button>
+</div>
+
+
+
+</form>
+
+
+</div>

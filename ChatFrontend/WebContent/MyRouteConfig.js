@@ -28,6 +28,7 @@ myApp.config(function($routeProvider)
 			.when("/viewforums",{templateUrl:"c_forum/Viewforums.html"})
 			.when("/viewforumcomments",{templateUrl:"c_forum/Viewforumcomment.html"})
 			.when("/viewusers",{templateUrl:"c_user/Viewusers.html"})
+			.when("/updateprofile",{templateUrl:"c_user/UpdateProfile.html"})
 		});
 myApp.run(function($rootScope,$cookieStore)
 		{
